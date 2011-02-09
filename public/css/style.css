@@ -1,0 +1,432 @@
+﻿html,body{
+    color: gray;
+    height: 100%;
+}
+* { font-family: "Trebuchet MS"; font-size: 96%; }
+body{
+    background: #fff url("../../public/img/background.png") repeat-x;
+    font-size: 12px;
+}
+#global{
+    min-height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+#centre{
+    background: #fff;
+}
+/**
+* Menu
+**/
+    #menu{
+	margin-top: 0;
+	float: right;
+	height: 54px;
+	font-size: 13px;
+    }
+    #menu ul {
+	padding: 18px 0 0 0;
+	list-style: none;
+	display: block;
+    }
+    #menu ul li {
+	float: left;
+	margin: 0 1.2em 0 0;
+	font: bold 1.1em fantasy;
+    }
+    #menu ul li a{
+	color: #5d5d5c;
+	text-decoration: none;
+    }
+    #menu ul li a:hover{
+	color: #cf493d;
+    }
+    #menu ul li.separateur{
+        color: #d5d5d3;
+    }
+/**
+* Sidebarre
+**/
+    #sidebar{
+	background: url('../../public/img/bloc-note2.jpg') no-repeat;
+	margin: 20px 0;
+    }
+    #sidebar ul{
+	padding: 15px 0 0 0;
+	height: 344px;
+	overflow: hidden;
+	list-style: url('../../public/img/puce.png') inside;
+    }
+    #sidebar ul li{
+	line-height: 25px;
+	font-size: 11px;
+	font-variant: small-caps;
+    }
+/**
+* Contenu
+**/
+    #contenu{
+	padding: 0px 0px 50px 0px;
+    }
+    #contenu p{
+    }
+    #contenu h4, #contenu h5, #contenu h6{
+	padding: 0px 30px 0 15px;
+    }
+    #contenu h3, #contenu h2, #contenu h1{
+        text-align: center;
+	padding: 20px 30px 0 15px;
+	color: #A81818;
+    }
+/**
+* Général
+**/
+    p{
+	text-align: justify;
+	color: #3D3D3D;
+        clear: both;
+    }
+    a{
+	text-decoration: none;
+	color: #5b8cb1;
+    }
+    a:hover{
+	color: #600000;
+    }
+    .error{
+	color: #A81818;
+        font-weight: bold;
+        list-style: none;
+        line-height: 3em;
+        border: solid #600000 dotted;
+        background-color: #f9c7c7;
+        text-align: center;
+    }
+    #liste_errors{
+        margin: 0;
+        padding: 0;
+        height: 0;
+    }
+    .separator{
+	border-top: 1px dotted gray;
+	margin: 0 auto 0;
+        width: 100%;
+        display: block;
+    }
+/**
+* Footer
+**/
+	#footer{
+	    bottom: 0;
+	}
+        #footer #liens{
+            padding-left: 100px;
+        }
+	#footer div#liens div{
+	    border-right: 1px dotted gray;
+	    margin: 20px;
+	    height: 150px;
+	    overflow: hidden;
+	}
+	#footer ul li{
+	    list-style-type: none;
+	}
+	#footer p{
+	    text-align: right;
+	}
+	#liens{
+	    margin: 0;
+	    padding-left: 30px;
+	    
+	}
+	#footer #liens .omega{
+	    border: none;
+	}
+	#footer h3, #footer h4,#footer h5, #footer h6{
+	color: #A81818;
+    }
+/**
+* Header
+**/
+    #header{
+        height: 150px;
+    }
+    #header h1{
+	position: absolute;
+	float: left;
+	margin: -9999px;
+	height: 0;
+	font-size: 0;
+    }
+    #header a{
+	display: block;
+	height: 89px;
+    }
+/**
+* Form
+**/
+        #form_profil label {
+            float: left;
+            text-align: right;
+        }
+        #form_profil p{
+            margin-top: 2px;
+        }
+        #form_profil input {
+            width: 15em;
+            float: right;
+        }
+        #form_profil input[type=checkbox] {
+            width: inherit;
+            float: none;
+        }
+        #form_profil input[type=submit], #form_profil input[type=button]{
+            width: 10em;
+            margin-top: 20px;
+        }
+        #form_profil h3{
+            text-align: left;
+            margin: 0;
+            padding: 0;
+            color: #54585f;
+            font-size: 2.5em;
+            font-weight:normal;
+        }
+        .inscription label, #login_form label {
+            width: 30em; float: left;
+            text-align: right;
+            padding-right: 20px;
+        }
+        label.error {
+            float: none; color: red; padding-left: .5em; vertical-align: top;
+        }
+        em {
+             font-weight: bold; padding-right: 1em; vertical-align: top;
+        }
+        #choix #entreprise, #choix #prestataire{
+            display: block;
+        }
+        form input{
+            background: #fff;
+            line-height: 20px;
+            border: 1px solid #9E9E9E;
+        }
+        #form_prestataire input, #form_entreprise input{
+            width: 20em;
+        }
+/**
+* Actions
+**/
+    ul#actions, .actions{
+	display: block;
+	height: 20px;
+	width: 100%;
+    }
+    ul#actions li, .actions li{
+	list-style: none;
+	float: left;
+    }
+/**
+* Commentaires
+**/
+    #commentaires{
+	/*background: #FFF6AD;*/
+    }
+    #commentaires .commentaire div{
+	background: #fff;
+	margin: 10px;
+    }
+    #commentaires .commentaire .pseudo{
+	background: url("../../public/img/photos-footer.png") no-repeat;
+	height: 107px;
+    }
+     #commentaires .commentaire .contenu{
+	border-radius: 15px;
+	box-shadow: 1px 1px 12px 1px #9E9E9E;
+	-webkit-border-radius: 15px;
+	-webkit-box-shadow: 1px 1px 12px 1px #9E9E9E;
+	-moz-border-radius: 15px;
+	-moz-box-shadow: 1px 1px 12px 1px #9E9E9E;
+	margin-top: 30px;
+	min-height: 77px;
+	padding: 5px 10px 10px 10px;
+    }
+    /**
+    *  Vignette
+    **/
+    .vignette{
+	box-shadow: 1px 1px 12px 3px #9E9E9E;
+	-webkit-box-shadow: 1px 1px 12px 3px #9E9E9E;
+	-moz-box-shadow: 1px 1px 12px 3px #9E9E9E;
+    }
+/**
+* Tableau et Colonnes
+**/
+/**
+* Offre
+**/
+        .offre{
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            background: #f4f4f4;
+        }
+	ul#offres{
+	}
+	ul#offres li{
+	    list-style-type: none;
+	}
+	ul#offres li *{
+            margin: 0;
+            padding: 0;
+	}
+	ul#offres li a{
+		border-radius: 10px;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		background: #f4f4f4;
+		display: block;
+		text-decoration: none;
+		margin-top: 10px;
+		min-height: 50px;
+        overflow: hidden;
+		padding: 5px 10px 10px 10px;
+	}
+        ul#offres li a p{
+            padding-right: 20px;
+        }
+	ul#offres li a:hover{
+		color: #fff;
+		background: #25272a url("../../public/img/offre-div.png") repeat-x;
+		box-shadow: 1px 1px 5px 1px #9E9E9E;
+		-webkit-box-shadow: 1px 1px 5px 1px #9E9E9E;
+		-moz-box-shadow: 1px 1px 5px 1px #9E9E9E;
+	}
+	ul#offres li a:hover p{
+		color: #fff;
+	}
+	ul#offres li.en-tetes{
+		line-height: 50px;
+		padding: 0 0 0 10px;
+		font-variant: small-caps;
+		background: #e6e6e6;
+		color: #54585f;
+		font-weight:bold;
+		height: 50px;
+		display: block;
+	}
+        #offres_profil{
+            overflow: hidden;
+            padding: 10px 0;
+        }
+        #offres_profil tr{
+            height: 50px;
+            border: 5px solid #fff;
+            margin-top: 5px;
+            background: #f4f4f4;
+        }
+        #offres_profil th{
+            color: #fff;
+            background: #25272a url("../../public/img/offre-div.png") repeat-x;
+        }
+        #offres_profil td{
+            padding: 2px 10px 5px 10px;
+        }
+/**
+* Devis
+**/
+
+	ul#devis{
+		margin-top: 15px;
+	}
+	ul#devis li{
+	    list-style-type: none;
+	}
+	ul#devis li a{
+                margin: 10px 0 0;
+		border-radius: 10px;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		background: #f4f4f4;
+		display: block;
+		text-decoration: none;
+		min-height: 50px;
+		padding: 5px 10px 10px 10px;
+	}
+	ul#devis li a:hover{
+		color: #fff;
+		background: #25272a url("../../public/img/offre-div.png") repeat-x;
+		box-shadow: 1px 1px 12px 1px #9E9E9E;
+		-webkit-box-shadow: 1px 1px 12px 1px #9E9E9E;
+		-moz-box-shadow: 1px 1px 12px 1px #9E9E9E;
+	}
+	ul#devis li a:hover p{
+		color: #fff;
+	}
+	ul#devis li.en-tete.colonnes{
+		line-height: 50px;
+		background: #e6e6e6;
+		color: #54585f;
+		font-weight:bold;
+		height: 50px;
+		display: block;
+	}
+
+        #devis_profil{
+            overflow: hidden;
+            padding: 10px 0;
+        }
+        #devis_profil tr{
+            height: 50px;
+            border: 5px solid #fff;
+            margin-top: 5px;
+            background: #f4f4f4;
+        }
+        #devis_profil th{
+            color: #fff;
+            background: #25272a url("../../public/img/offre-div.png") repeat-x;
+        }
+        #devis_profil td{
+            padding: 2px 10px 5px 10px;
+        }
+.radius-5{
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+.shadow-5{
+    box-shadow: 0px 0px 5px 0px #9E9E9E;
+    -webkit-box-shadow: 0px 0px 5px 0px #9E9E9E;
+    -moz-box-shadow: 0px 0px 5px 0px #9E9E9E;
+}
+
+.twitterbox{
+    display: none;
+}
+.twitterbox div{
+    display: none;
+}
+ul{
+	
+}
+.entete-boite{
+    color: #fff;
+    background: #25272a url("../../public/img/offre-div.png") repeat-x;
+}
+div.entete-boite{
+    width: 100%;
+    line-height: 3em;
+    text-indent: 30px;
+}
+h4.entete-boite{
+    font-size: 15px;
+    line-height: 2em;
+    text-indent: 10px;
+}
+.entete-boite a{
+    
+}
+.entete-boite a:hover{
+    text-decoration: underline;
+    color: white;
+}

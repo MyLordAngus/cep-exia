@@ -1,0 +1,35 @@
+
+body{
+    background: #fff url("../../public/img/background-accueil.png") repeat-x;
+}
+#header{
+    height: 330px;
+}
+.fleche{
+	line-height: 265px;
+        margin-top: 1em;
+}
+#slideshow{
+	padding-top: 15px;
+	height: 265px;
+}
+.slide{
+    display: none;
+}
+ul#offres li a{
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        background: #f4f4f4;
+        display: block;
+        text-decoration: none;
+        margin-top: 10px;
+        min-height: 50px;
+        padding: 5px 10px 10px 10px;
+}
+.twitterbox{
+    display: block;overflow: hidden; height: 70px; margin-top: 60px;
+}
+.twitterbox div{
+    display: block;margin-top: 0;
+}
