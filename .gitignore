@@ -1,0 +1,6 @@
+# Fichier ignore par git
+nbproject/*
+
+# Conf CodeIgniter
+app/config/config.php
+app/config/database.php
