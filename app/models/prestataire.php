@@ -82,6 +82,7 @@
 		/*** Renvoie une liste de devis en fonction de l'ID du prestataire ***/
 		public function selectOwned(){
 			$this->listeDevis = array();
+                        $this->db->order_by('Date', 'Desc');
 			$requete = $this->db->get_where('devis',
                                 array('IDPrestataire' => $this->ID));
 

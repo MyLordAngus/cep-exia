@@ -1,21 +1,38 @@
 <div class="grid_16" id="contenu">
-    <div class="grid_3" id="icon_devis">
+    <div class="grid_4 shadow-5 radius-5 alpha" id="icon_devis">
         <img alt="icon_devis" title="Devis" src="<?php echo URL_BASE;?>public/img/icon_devis.png" />
-        <h4>L'offre</h4>
-        <ol>
+        <h4 class="entete-boite">Récap de l'entreprise</h4>
+        <ul>
             <li>
-               <?php echo $offre->titre; ?>
+                <strong>Raison sociale : </strong><?php echo $offre->Entreprise->raisonSoc; ?>
             </li>
             <li>
-               <?php echo $offre->Categorie->toString(); ?>
+               <strong>Adresse : </strong><?php echo $offre->Entreprise->adresse; ?><br/>
+               <?php echo $offre->Entreprise->codePostal; ?><br/>
+               <?php echo $offre->Entreprise->ville; ?>
             </li>
             <li>
-               <?php echo $offre->Entreprise->raisonSoc; ?>
+               <strong>Email : </strong><?php echo $offre->Entreprise->email; ?>
             </li>
-        </ol>
+            <li>
+               <strong>Tel : </strong><?php echo $offre->Entreprise->telephone; ?>
+            </li>
+            <li>
+                <strong>Site internet : </strong><?php echo $offre->Entreprise->domaine; ?>
+            </li>
+        </ul>
     </div>
-    <div class="grid_12 shadow-5" id="devis_form">
-        <h2>Création d'un Devis</h2>
+    <div class="grid_11 shadow-5 radius-5 omega">
+        <h4 class="entete-boite shadow-5 radius-5"><?php echo $offre->titre?></h4>
+        <div class="grid_10">
+            <p><?php echo $offre->description?></p>
+            <p>Moyenne des montant des devis : <?php echo $offre->montantMoyen()?> €</p>
+            <p>Nombre de devis : <?php echo $offre->compteDevis()?> </p>
+        </div>
+    </div>
+    <p class="grid_15"></p>
+    <div class="grid_15 shadow-5 radius-5" id="devis_form">
+        <h4 class="entete-boite shadow-5 radius-5">Création d'un Devis</h4>
         <form method="post" action='<?php echo base_url()."index.php/devis_controller/add/".$offre->numero;?>' >
             <p class="grid_11">
                     <label for="montant">Montant</label>
@@ -23,10 +40,10 @@
             </p>
             <p class="grid_11">
                     <label for="description">Description</label>
-                    <textarea name="description" rows="4" id="editor1" cols="80">
+                    <textarea name="description" rows="4" id="editor1" cols="70">
                     </textarea>
                     <script type="text/javascript">
-                            CKEDITOR.replace( 'editor1', {toolbar : 'Basic'} );
+                            CKEDITOR.replace( 'editor1', {toolbar : 'Basic', width : 860} );
                     </script>
             </p>
             <p class="grid_11">

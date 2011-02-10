@@ -49,11 +49,9 @@ class Site_controller extends Controller {
     private function getTumblrPosts(){
         $xml = NULL;
         $url = rawurlencode("http://communaute-exars-prestataires.tumblr.com/api/read");
-        if(file_exists($url)){
-            $xml = simplexml_load_file($url);
-        }
-        if($xml !== NULL)
+        if($xml = simplexml_load_file($url)){
             return $xml->posts;
+        }
         return NULL;
 
     }

@@ -281,9 +281,9 @@ body{
             padding: 0;
 	}
 	ul#offres li a{
-		border-radius: 10px;
-		-webkit-border-radius: 10px;
-		-moz-border-radius: 10px;
+		border-radius: 2px;
+		-webkit-border-radius: 2px;
+		-moz-border-radius: 2px;
 		background: #f4f4f4;
 		display: block;
 		text-decoration: none;
@@ -316,6 +316,7 @@ body{
 		display: block;
 	}
         #offres_profil{
+            width: 99%;
             overflow: hidden;
             padding: 10px 0;
         }
@@ -373,6 +374,7 @@ body{
 	}
 
         #devis_profil{
+            width: 100%;
             overflow: hidden;
             padding: 10px 0;
         }
@@ -424,9 +426,17 @@ h4.entete-boite{
     text-indent: 10px;
 }
 .entete-boite a{
-    
+
+	color: #7ebeef;
+	text-decoration: inherit;
 }
 .entete-boite a:hover{
     text-decoration: underline;
     color: white;
+}
+h4.accepted{
+    color: green;
+}
+h4.denied{
+    color: red;
 }

@@ -62,6 +62,7 @@ class Offre implements ICrudModel{
                           'Date' => time(),
                           'IDEntreprise' => $model->Entreprise->ID,
                           'IDCategorie' => $model->Categorie->ID,
+                          'IDStatut' => $model->Statut->ID,
                           'Description' => $model->description);
             $this->db->insert('offres', $data);
 	}
@@ -70,6 +71,7 @@ class Offre implements ICrudModel{
             $data = array('Titre' => $model->titre,
                           'Date' => time(),
                           'IDCategorie' => $model->Categorie->ID,
+                          'IDStatut' => $model->Statut->ID,
                           'Description' => $model->description);
             $this->db->where('ID', $model->numero);
             $this->db->update('Offres', $data);
@@ -83,7 +85,7 @@ class Offre implements ICrudModel{
 	/*** Renvoie un tableau d'offres en fonction d'une limite basse et d'un nombre d'Offres ***/
 	public function selectOffresByPages($limitInf, $limitNombre){
 		$listeOffres = array();
-                $this->db->order_by('Date', 'desc');
+                $this->db->order_by('Date', 'Desc');
 		$requete = $this->db->get('offres', $limitNombre, $limitInf);
 		foreach($requete->result() as $reqOffre){
 		    $Offre = new Offre();
@@ -130,6 +132,8 @@ class Offre implements ICrudModel{
 	
 	/*** Renvoie une liste de devis en fonction de l'ID de l'offre ***/
 	public function selectDevis(){
+            $this->db->order_by('Etat', 'Desc');
+            $this->db->order_by('Date', 'Desc');
             $requete = $this->db->get_where('Devis', array('IDOffre' => $this->numero));
             foreach($requete->result() as $reqDevis){
                     $Devis = new Devis();

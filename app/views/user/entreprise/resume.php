@@ -1,9 +1,9 @@
 <div id="contenu" class="grid_16">
     <h3 class="grid_15">Résumé de l'entreprise <?php echo $entreprise->raisonSoc?></h3>
-    <div class="grid_3 alpha">
+    <div class="grid_3 alpha shadow-5 radius-5">
         <img src="<?php echo base_url()."public/img/icon_company.png"; ?>" alt="Icone Entreprise" title="<?php echo $entreprise->raisonSoc ?>" />
     </div>
-    <div class="grid_12 omega shadow-5">
+    <div class="grid_12 omega shadow-5 radius-5">
         <p class="grid_11"></p>
         <p class="grid_11"></p>
         <div class="grid_11">

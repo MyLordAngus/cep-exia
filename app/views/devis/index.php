@@ -41,19 +41,22 @@
                             par <a href="<?php echo base_url()."index.php/resume-prestataire-".$d->Prestataire->ID;?>.html">
                                 <?php echo $d->Prestataire->prenom;?> 
                                 <?php echo $d->Prestataire->nom;?>
-                            </a>
+                            </a> d'un montant de 
+                            <?php echo $d->montant;?> €
                         </span>
                     </div>
                     <div class="grid_8">
                         <p><?php echo $d->description?></p>
                     </div>
                     <div>
-                        <?php if($d->etat === 0){?>
-                        <a href="<?php echo base_url()."index.php/devis_controller/accepter/". $d->numero; ?>">
+                        <?php if($d->etat == 0){?>
+                        <a href="<?php echo base_url()."index.php/devis_controller/accepter/". $d->numero."/".$offre->numero; ?>">
                             <h4>Accepter</h4>
                         </a>
+                        <?php }elseif($d->etat == 1){?>
+                        <h4 class="accepted">Accepté</h4>
                         <?php }else{?>
-                        <h4 style="color: green">Accepté</h4>
+                        <h4 class="denied">Refusé</h4>
                         <?php }?>
                     </div>
                 </div>

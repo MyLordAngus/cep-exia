@@ -74,11 +74,16 @@ class Devis implements ICrudModel{
                       'Description'=> $model->description,
                       'IDPrestataire'=> $model->Prestataire->ID);
         $this->db->insert('devis', $data);
+        $data = array('IDStatut'=> 2);
+        $this->db->where('ID', $model->Offre->numero);
+        $this->db->update('offres', $data);
     }
     public function etatToString(){
         switch ($this->etat) {
             case 1:
                 return "Accepté";
+            case -1:
+                return "Refusé";
             default:
                 return "En attente";
         }

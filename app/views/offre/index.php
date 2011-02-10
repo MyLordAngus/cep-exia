@@ -30,8 +30,8 @@
         foreach($offres as $offre){
     ?>
         <li>
-            <span class="grid_2 alpha">&nbsp;&nbsp;&nbsp;<?php echo $offre->date; ?></span>
             <a href="<?php echo URL_BASE."index.php/offres/description/offre-".$offre->numero; ?>.html">
+                <span class="grid_2 alpha">&nbsp;&nbsp;&nbsp;<?php echo $offre->date; ?></span>
                 <div class="grid_9 ">
                     <h6><?php echo $offre->titre; ?></h6>
                     <p>

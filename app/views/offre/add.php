@@ -1,28 +1,28 @@
 <div class="grid_16" id="contenu">
-    <div class="grid_3 shadow-5 radius-5">
+    <div class="grid_4 shadow-5 radius-5">
         <img alt="icon_company" title="Entreprise" src="<?php echo URL_BASE;?>public/img/icon_offre.png" />
         <h4 class="entete-boite">Actions</h4>
         <ul>
             <li>
-                - <a href="<?php echo base_url()."index.php/entreprise_controller/";?> ">
+                <a href="<?php echo base_url()."index.php/entreprise_controller/";?> ">
                    Revenir au profil
                 </a>
             </li>
             <li>
-                - <a href="<?php echo base_url()."index.php/offres_controller/add";?>">Ajouter une offre</a>
+                <a href="<?php echo base_url()."index.php/offres_controller/add";?>">Ajouter une offre</a>
             </li>
             <li>
-                - <a href="<?php echo base_url()."index.php/offres_controller/";?>">Voir les offres</a>
+                <a href="<?php echo base_url()."index.php/offres_controller/";?>">Voir les offres</a>
             </li>
             <li>
-                - <a href="<?php echo base_url()."index.php/site_controller/deconnexion";?> ">
+                <a href="<?php echo base_url()."index.php/site_controller/deconnexion";?> ">
                     Se déconnecté
                 </a>
             </li>
         </ul>
     </div>
-    <div class="grid_12 shadow-5 radius-5" id="offre_form">
-        <h3><?php echo $titre ?></h3>
+    <div class="grid_11 shadow-5 radius-5" id="offre_form">
+        <h4 class="entete-boite shadow-5 radius-5"><?php echo $titre ?></h4>
         <form method="post" action='<?php echo base_url()."index.php/offres_controller/add";?>' >
             <br>
             <p class="grid_8">
@@ -45,7 +45,7 @@
                 <label for="description">Description</label>
                 <textarea name="description" rows="4" id="editor1" cols="80"><?php echo $offre->description ?></textarea>
                 <script type="text/javascript">
-                        CKEDITOR.replace( 'editor1', {toolbar : 'Basic'} );
+                        CKEDITOR.replace( 'editor1', {toolbar : 'Basic', width : 620} );
                 </script>
             </p>
             <p class="grid_8">

@@ -22,6 +22,7 @@ class Devis_Controller extends Controller{
     public function add($idOffre=1){
         $this->offreDAO->select($idOffre);
         if(!$this->form_validation->run("devis_add")){
+            $this->offreDAO->selectDevis();
             $data['menu'] = Menu::get();
             $data['offre'] = $this->offreDAO;
             $data['titre'] = "Creation d'un devis";
@@ -35,7 +36,7 @@ class Devis_Controller extends Controller{
             $Devis->description = $this->input->post('description');
             $Devis->duree = $this->input->post('duree');
             $this->devisDAO->insert($Devis);
-            redirect('offres/description/'.$Devis->Offre->numero);
+            redirect('offres/description/offre-'.$Devis->Offre->numero);
         }
     }
 
@@ -58,10 +59,16 @@ class Devis_Controller extends Controller{
         }
     }
     
-    public function accepter($idDevis=NULL) {
-        $devis = $this->devisDAO->select($idDevis);
-        $devis->etat = 1;
-        $this->devisDAO->update($devis);
-        redirect('devis/tous-les-devis/offre-'.$devis->Offre->numero);
+    public function accepter($idDevis, $idOffre) {
+        $offre = $this->offreDAO->select($idOffre);
+        $listeDevis = $this->offreDAO->selectDevis();
+        foreach ($listeDevis as $d) {
+            if($d->numero == $idDevis)
+                $d->etat = 1;
+            else
+                $d->etat = -1;
+            $this->devisDAO->update($d);
+        }
+        redirect('devis/tous-les-devis/offre-'.$offre->numero);
     }
 }

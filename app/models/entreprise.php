@@ -69,6 +69,7 @@
 		/*** Renvoie la liste d'offres en fonction de l'ID de l'entreprise ***/
 		public function selectOwned(){
                     $this->db->select('ID');
+                    $this->db->order_by('Date', 'Desc');
                     $requete = $this->db->get_where('offres', array('IDEntreprise' => $this->ID));
                     foreach($requete->result() as $reqOffre){
                             $Offre = new Offre();

@@ -20,7 +20,7 @@
             }
         ?>
         </ul>
-        <a href="<?php echo base_url()."index.php/offres/" ?>">Voir toutes les offres</a>
+        <a href="<?php echo base_url()."index.php/offres.html" ?>">Voir toutes les offres</a>
     </div>
     <div class="grid_8 omega">
         <h5>Posts du blog</h5>
