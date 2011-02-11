@@ -4,10 +4,10 @@
  *
  * @author SuperBen
  */
-class Offres_controller extends Controller {
+class Offres_controller extends CI_Controller {
     private $offreDAO;
     public function __construct(){
-        parent::Controller();
+        parent::__construct();
         $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
         $this->offreDAO = new Offre();
     }

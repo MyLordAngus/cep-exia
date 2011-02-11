@@ -4,9 +4,9 @@
  *
  * @author SuperBen
  */
-class Login_controller extends Controller {
+class Login_controller extends CI_Controller {
     public function  __construct() {
-        parent::Controller();
+        parent::__construct();
         $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
     }
     public function index(){

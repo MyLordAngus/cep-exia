@@ -9,7 +9,7 @@
 | and its corresponding controller class/method. The segments in a
 | URL normally follow this pattern:
 |
-| 	example.com/class/method/id/
+|	example.com/class/method/id/
 |
 | In some instances, however, you may want to remap this relationship
 | so that a different class/function is called than the one
@@ -23,7 +23,7 @@
 | RESERVED ROUTES
 | -------------------------------------------------------------------------
 |
-| There are two reserved routes:
+| There area two reserved routes:
 |
 |	$route['default_controller'] = 'welcome';
 |
@@ -31,12 +31,10 @@
 | URI contains no data. In the above example, the "welcome" class
 | would be loaded.
 |
-|	$route['scaffolding_trigger'] = 'scaffolding';
+|	$route['404_override'] = 'errors/page_missing';
 |
-| This route lets you set a "secret" word that will trigger the
-| scaffolding feature for added security. Note: Scaffolding must be
-| enabled in the controller in which you intend to use it.   The reserved 
-| routes must come before any wildcard or regular expression routes.
+| This route will tell the Router what URI segments to use if those provided
+| in the URL cannot be matched to a valid route.
 |
 */
 
@@ -50,6 +48,7 @@ $route['offres/add'] = "Offres_controller/add";
 $route['offres/description/offre-(:num)'] = "Offres_controller/description/$1";
 //DEVIS
 $route['devis'] = "Devis_controller";
+$route['devis/description/devis-(:num)'] = "Devis_controller/description/$1";
 $route['devis/tous-les-devis/offre-(:num)'] = "Devis_controller/index/$1";
 //LOGIN
 $route['login'] = "Login_controller";
@@ -62,6 +61,5 @@ $route['entreprise'] = "Entreprise_controller";
 $route['resume-entreprise-(:num)'] = "Site_controller/resumeEntreprise/$1";
 $route['scaffolding_trigger'] = "";
 
-
 /* End of file routes.php */
-/* Location: ./system/application/config/routes.php */
+/* Location: ./application/config/routes.php */

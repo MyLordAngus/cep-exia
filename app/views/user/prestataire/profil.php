@@ -1,6 +1,6 @@
 <div id="contenu" class="grid_16">
     <div class="grid_4 alpha shadow-5 radius-5" id="icon_user">
-         <h4 class="entete-boite">Actions</h4>
+         <h4 class="entete-boite shadow-5 radius-5">Actions</h4>
         <ul>
             <li>
                 <a href="<?php echo base_url()."index.php/offres_controller/";?>">Voir les offres</a>
@@ -13,15 +13,15 @@
             </li>
         </ul>
     </div>
-    <div class="grid_11 omega shadow-5 radius-5">
+    <div class="grid_12 omega shadow-5 radius-5">
         <form id="form_profil" method="post" action="<?php echo base_url()."index.php/prestataire_controller/save";?>">
-            <div class="grid_10">
+            <div class="grid_11">
                 <h3>Profil utilisateur : <?php echo $user->login?></h3>
                 <p class="info">Vous pouvez modifier vos données personnelles en cliquant sur
                     "modifier" qui transformera votre profil en un formulaire.
                 </p>
             </div>
-            <div class="grid_10">
+            <div class="grid_11">
                 <div class="grid_5 alpha">
                     <p>
                         <label for="nom">Nom :</label>
@@ -61,8 +61,8 @@
                     <p></p>
                 </div>
             </div>
-            <div class="grid_6">
-                <h5>Nouvelles compétences :</h5>
+            <div class="grid_11">
+                <h5>Compétences :</h5>
                 <ul>
                     <?php
                     foreach($allCompetences as $Competence){
@@ -101,7 +101,7 @@
                             <td>'.$d->montant.'</td>
                             <td>'.substr($d->description,0 , 250).'</td>
                             <td>'.$d->etatToString().'</td>
-                            <td><a href="'.base_url().'index.php/offres/description/offre-'.$d->Offre->numero.'">Aperçu</a></td>
+                            <td><a href="'.base_url().'index.php/devis/description/devis-'.$d->numero.'.html">Aperçu</a></td>
                             <td><a href="'.base_url().'index.php/devis_controller/edit/'.$d->numero.'">Editer</a></td>
                           </tr>';
                 }

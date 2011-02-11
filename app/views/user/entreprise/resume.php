@@ -3,7 +3,7 @@
     <div class="grid_3 alpha shadow-5 radius-5">
         <img src="<?php echo base_url()."public/img/icon_company.png"; ?>" alt="Icone Entreprise" title="<?php echo $entreprise->raisonSoc ?>" />
     </div>
-    <div class="grid_12 omega shadow-5 radius-5">
+    <div class="grid_13 omega shadow-5 radius-5">
         <p class="grid_11"></p>
         <p class="grid_11"></p>
         <div class="grid_11">
@@ -17,7 +17,7 @@
         </div>
         <p class="grid_11"></p>
         <p class="grid_11"></p>
-        <table class="grid_11" id="offres_profil">
+        <table id="offres_profil">
             <thead>
                 <th>Date</th>
                 <th>Titre</th>

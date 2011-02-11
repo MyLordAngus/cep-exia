@@ -4,10 +4,10 @@
  *
  * @author SuperBen
  */
-class Site_controller extends Controller {
+class Site_controller extends CI_Controller {
     private $offreDAO;
     public function  __construct() {
-        parent::Controller();
+        parent::__construct();
         $this->offreDAO = new Offre();
     }
     public function index(){

@@ -4,11 +4,11 @@
  *
  * @author SuperBen
  */
-class Prestataire_controller extends Controller {
+class Prestataire_controller extends CI_Controller {
     private $user;
 
     public function  __construct() {
-        parent::Controller();
+        parent::__construct();
         $this->user = new Prestataire();
         $this->user->select($this->session->userdata('id'));
     }

@@ -56,8 +56,7 @@ class Devis implements ICrudModel{
     }
 
     public function update($model) {
-        $data = array('Date'=> time(),
-                      'Montant'=> $model->montant,
+        $data = array('Montant'=> $model->montant,
                       'Duree'=> $model->duree,
                       'Etat'=> $model->etat,
                       'Description'=> $model->description,

@@ -9,11 +9,11 @@
  *
  * @author SuperBen
  */
-class Entreprise_controller extends Controller {
+class Entreprise_controller extends CI_Controller {
     private $userDAO;
 
     public function  __construct() {
-        parent::Controller();
+        parent::__construct();
         $this->userDAO = new Entreprise();
         $this->userDAO->select($this->session->userdata('id'));
         $this->userDAO->selectOwned();

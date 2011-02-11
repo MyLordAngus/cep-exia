@@ -1,42 +1,41 @@
 <div class="grid_16" id="contenu">
     <div class="offre">
-        <div class="grid_4 alpha">
-            <div class="grid_3" id="icon_offre">
-                <img alt="icon_offre" title="Offre" src="<?php echo URL_BASE;?>public/img/icon_offre.png" />
-            </div>
-            <ul class="grid_3">
+        <div class="grid_8 shadow-5 radius-5 alpha">
+			<h4 class="entete-boite shadow-5 radius-5">Fiche offre : <?php echo $devis->Offre->titre;?></h4>
+            <ul>
                 <li>
-                    <a href="<?php echo URL_BASE;?>index.php/entreprise/resume-<?php echo $entreprise->ID;?>.html">
+                    <a href="<?php echo URL_BASE;?>index.php/resume-entreprise-<?php echo $devis->Offre->Entreprise->ID;?>.html">
                         <?php
-                        echo $entreprise->raisonSoc;
+                        echo $devis->Offre->Entreprise->raisonSoc;
                         ?>
                     </a>
                 </li>
                 <li>
-                    <?php echo $entreprise->email;?>
+                    <?php echo $devis->Offre->Entreprise->email;?>
                 </li>
                 <li>
-                    <?php echo "\n".$entreprise->adresse.", ".$entreprise->codePostal."\n".$entreprise->ville?>
+                    <?php //echo "\n".$devis->Offre->Entreprise->adresse.", ".$devis->Offre-Entreprise->codePostal."\n".$devis->Offre->Entreprise->ville?>
                 </li>
                 <li>
                     Tel :
-                    <?php echo $entreprise->telephone;?>
+                    <?php echo $devis->Offre->Entreprise->telephone;?>
                 </li>
                 <li>
                     Catégorie :
-                    <?php echo $offre->Categorie->toString();?>
+                    <?php echo $devis->Offre->Categorie->toString();?>
                 </li>
             </ul>
-            <div class="grid_4">
-                <a href="<?php echo base_url()."index.php/devis_controller/add/". $offre->numero; ?>">
-                    <img width="230px" src="<?php echo URL_BASE;?>public/img/devis.png" />
-                </a>
+            <div class="grid_7">
+                <p><?php echo $devis->Offre->description;?></p>
             </div>
         </div>
-        <div class="grid_12 omega">
-            <h4><?php echo $titre; ?></h4>
-            <div class="grid_12">
-                <p><?php echo $offre->description;?></p>
+        <div class="grid_8 shadow-5 radius-5 omega">
+            <h4 class="entete-boite shadow-5 radius-5">
+                <?php echo $titre; ?>
+                - <?php echo $devis->duree;?> heures
+                -  montant : <?php echo $devis->montant;?>€</h4>
+            <div class="grid_7">
+                <p><?php echo $devis->description;?></p>
             </div>
         </div>
     </div>

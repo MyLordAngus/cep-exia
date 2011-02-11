@@ -1,9 +1,9 @@
 <?php
-class Devis_Controller extends Controller{
+class Devis_Controller extends CI_Controller{
     private $devisDAO;
     private $offreDAO;
     public function __construct(){
-        parent::Controller();
+        parent::__construct();
         $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
         $this->devisDAO = new Devis();
         $this->offreDAO = new Offre();
@@ -70,5 +70,13 @@ class Devis_Controller extends Controller{
             $this->devisDAO->update($d);
         }
         redirect('devis/tous-les-devis/offre-'.$offre->numero);
+    }
+	public function description($idDevis){
+        $this->devisDAO->select($idDevis);
+        $data['titre'] = utf8_encode("Aperçu du devis");
+        $data['devis'] = $this->devisDAO;
+        $data['contenu'] = "devis/desc";
+        $data['menu'] = Menu::get();
+        $this->load->view("inc/template", $data);
     }
 }

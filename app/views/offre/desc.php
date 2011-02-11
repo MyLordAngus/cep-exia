@@ -29,8 +29,8 @@
                 </li>
             </ul>
         </div>
-        <div class="grid_10 omega shadow-5 radius-5">
-            <div class="grid_9">
+        <div class="grid_12 omega shadow-5 radius-5">
+            <div class="grid_11">
                 <h3>Offre : <?php echo $offre->titre; ?></h3>
                 <p>Déposée le <?php echo $offre->date; ?></p
                 <p><?php echo $offre->description;?></p>
