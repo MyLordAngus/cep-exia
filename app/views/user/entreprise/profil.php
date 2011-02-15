@@ -22,7 +22,7 @@
         </ul>
     </div>
     <div class="grid_12 omega shadow-5 radius-5">
-        <form id="form_profil" method="post" action="<?php echo base_url()."index.php/entreprise_controller/enregistrer";?>">
+        <form id="form_profil" method="post" action="<?php echo base_url()."index.php/entreprise_controller/save";?>">
             <div class="grid_11">
                 <h3>Profil <?php echo $user->login?></h3>
                 <p class="info">Vous pouvez modifier vos données personnelles en cliquant sur

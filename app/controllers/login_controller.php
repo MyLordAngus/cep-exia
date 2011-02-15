@@ -10,10 +10,6 @@ class Login_controller extends CI_Controller {
         $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
     }
     public function index(){
-        /*if($this->session->flashdata('error'))
-            $data['messages']['error'] = $this->session->flashdata('error');
-        if($this->session->flashdata('redirect'))
-            $this->session->set_flashdata('redirect', $this->session->flashdata('redirect'));*/
 
         if($this->form_validation->run('login')){
             $user = Compte::connexion($this->input->post('login'),  $this->input->post('mdp'));
@@ -25,6 +21,7 @@ class Login_controller extends CI_Controller {
                     'isLoged' => true,
                     'listeDroits' => $user->listeDroits
                 );
+				$_SESSION['userType'] = $user->getType();
                 $this->session->set_userdata($data);
                 if($this->session->flashdata('redirect'))
                     redirect ($this->session->flashdata('redirect'));

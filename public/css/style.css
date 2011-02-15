@@ -192,12 +192,30 @@ body{
             font-size: 2.5em;
             font-weight:normal;
         }
-        .inscription label, #login_form label {
-            width: 30em; float: left;
+		#login_form{
+			float: right;
+			margin-right: 40%;
+		}
+		#login_form label {float: left;
+            width: 10em; 
             text-align: right;
             padding-right: 20px;
         }
-        label.error {
+		.inscription label{
+            width: 20em;
+			float: left;
+		}
+		.inscription input{
+			float: left;
+		}
+		.inscription p{
+			padding: 0 20px;
+			overflow: hidden;
+		}
+		.inscription input.submit{
+			margin: auto;
+		}
+        l	abel.error {
             float: none; color: red; padding-left: .5em; vertical-align: top;
         }
         em {
@@ -211,8 +229,14 @@ body{
             line-height: 20px;
             border: 1px solid #9E9E9E;
         }
-        #form_prestataire input, #form_entreprise input{
-            width: 20em;
+        .input-5{
+            width: 5em;
+        }
+        .input-10{
+            width: 10em;
+        }
+        .input-15{
+            width: 15em;
         }
 /**
 * Actions

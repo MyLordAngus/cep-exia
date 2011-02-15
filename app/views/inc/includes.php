@@ -20,6 +20,7 @@
         <script type="text/javascript" src="<?php echo URL_BASE;?>public/js/inscription.js"></script>
         <script type="text/javascript" src="<?php echo URL_BASE;?>public/js/profil.js"></script>
         <script type="text/javascript" src="<?php echo URL_BASE;?>public/js/ckeditor/ckeditor.js"></script>
+		<script type="text/javascript" src="<?php echo URL_BASE;?>public/js/ckeditor/adapters/jquery.js'/>"></script>
     </head>
     <body>
         <div class="container_16" id="global">

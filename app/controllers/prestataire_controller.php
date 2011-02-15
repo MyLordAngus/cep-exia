@@ -47,14 +47,4 @@ class Prestataire_controller extends CI_Controller {
         redirect('prestataire');
     }
 
-    public function resume($id=1){
-        $prestataire = new Prestataire();
-        $prestataire->select($id);
-        $data['titre'] = "Résumé du prestataire ".$prestataire->nom.' '.$prestataire->prenom;
-        $data['prestataire'] = $prestataire;
-        $data['contenu'] = 'user/prestataire/resume';
-        $data['menu'] = Menu::get();
-        $this->load->view('inc/template', $data);
-    }
-
 }

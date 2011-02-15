@@ -29,7 +29,7 @@ class Entreprise_controller extends CI_Controller {
         $this->load->view('inc/template', $data);
     }
 
-    public function enregistrer(){
+    public function save(){
         $Entreprise = $this->userDAO;
         $Entreprise->raisonSoc = $this->input->post('raisonSoc');
         $Entreprise->telephone = $this->input->post('telephone');
