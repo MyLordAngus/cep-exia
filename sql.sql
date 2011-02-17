@@ -240,10 +240,10 @@ INSERT INTO `prestataires` (`ID`, `Nom`, `Prenom`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `prestatairescompetences`
+-- Structure de la table `prestatairesCompetences`
 --
 
-CREATE TABLE IF NOT EXISTS `prestatairescompetences` (
+CREATE TABLE IF NOT EXISTS `prestatairesCompetences` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `IDCompetence` int(11) NOT NULL,
   `IDPrestataire` int(11) NOT NULL,
