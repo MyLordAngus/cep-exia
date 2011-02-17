@@ -10,7 +10,9 @@ class Login_controller extends CI_Controller {
         $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
     }
     public function index(){
-
+		if(!empty($_SESSION['error'])){
+			
+		}
         if($this->form_validation->run('login')){
             $user = Compte::connexion($this->input->post('login'),  $this->input->post('mdp'));
             if($user){

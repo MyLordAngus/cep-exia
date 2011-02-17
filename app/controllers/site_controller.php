@@ -1,6 +1,6 @@
 <?php
 /**
- * Description of site_controller
+ * Description of Site_controller
  *
  * @author SuperBen
  */
