@@ -28,7 +28,7 @@ class Login_controller extends CI_Controller {
                 if($this->session->flashdata('redirect'))
                     redirect ($this->session->flashdata('redirect'));
                 else
-                    redirect($user->getType());
+                    redirect($user->getType().'_controller');
             }
             else{
                 $data['messages']['error'] = "Combinaison login+mot-de-passe invalide.";

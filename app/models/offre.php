@@ -134,7 +134,7 @@ class Offre implements ICrudModel{
 	public function selectDevis(){
             $this->db->order_by('Etat', 'Desc');
             $this->db->order_by('Date', 'Desc');
-            $requete = $this->db->get_where('Devis', array('IDOffre' => $this->numero));
+            $requete = $this->db->get_where('devis', array('IDOffre' => $this->numero));
             foreach($requete->result() as $reqDevis){
                     $Devis = new Devis();
                     $Devis->numero = $reqDevis->ID;

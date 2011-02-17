@@ -177,13 +177,13 @@ CREATE TABLE IF NOT EXISTS `menu` (
 
 INSERT INTO `menu` (`ID`, `Libelle`, `Lien`, `Code`) VALUES
 (1, 'Accueil', '', 0),
-(2, 'Inscription', '/login/sinscrire.html', 1),
-(3, 'Login', '/login.html', 1),
+(2, 'Inscription', '/login_controller/sinscrire', 1),
+(3, 'Login', '/login_controller', 1),
 (4, 'Profil', '/prestataire_controller', 3),
 (5, 'Profil', '/entreprise_controller', 2),
-(6, 'Offres', '/offres.html', 0),
-(7, 'Nouvelle Offre', '/offres/add.html', 2),
-(8, 'Déconnexion', '/site/deconnexion.html', 4);
+(6, 'Offres', '/offres_controller', 0),
+(7, 'Nouvelle Offre', '/offres_controller/add', 2),
+(8, 'Déconnexion', '/site_controller/deconnexion', 4);
 
 -- --------------------------------------------------------
 
@@ -254,7 +254,7 @@ CREATE TABLE IF NOT EXISTS `prestatairesCompetences` (
 -- Contenu de la table `prestatairescompetences`
 --
 
-INSERT INTO `prestatairescompetences` (`ID`, `IDCompetence`, `IDPrestataire`) VALUES
+INSERT INTO `prestatairesCompetences` (`ID`, `IDCompetence`, `IDPrestataire`) VALUES
 (88, 1, 0),
 (89, 2, 0),
 (109, 1, 2),
