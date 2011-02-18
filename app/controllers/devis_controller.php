@@ -75,9 +75,9 @@ class Devis_Controller extends CI_Controller{
 	redirect('devis/tous-les-devis/offre-'.$offre->numero);
     }
 
-    public function description($idDevis){
+    public function show($idDevis){
 	$this->devisDAO->select($idDevis);
-	$data['titre'] = utf8_encode("Aper�u du devis");
+	$data['titre'] = 'Aperçu du devis';
 	$data['devis'] = $this->devisDAO;
 	$data['contenu'] = "devis/desc";
 	$data['menu'] = Menu::get();

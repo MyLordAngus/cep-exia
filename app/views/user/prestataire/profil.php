@@ -94,18 +94,16 @@
                     <th></th>
                     <th></th>
                 </tr>
-                <?php
-                foreach($devis as $d){
-                    echo '<tr>
-                            <td>'.date("d/m/y",$d->date).'</td>
-                            <td>'.$d->montant.'</td>
-                            <td>'.substr($d->description,0 , 250).'</td>
-                            <td>'.$d->etatToString().'</td>
-                            <td><a href="'.base_url().'index.php/devis/description/devis-'.$d->numero.'.html">Aperçu</a></td>
-                            <td><a href="'.base_url().'index.php/devis_controller/edit/'.$d->numero.'">Editer</a></td>
-                          </tr>';
-                }
-                ?>
+                <?php foreach($devis as $d) : ?>
+                    <tr>
+			<td><?php echo date("d/m/y",$d->date) ?></td>
+                        <td><?php echo $d->montant ?></td>
+                        <td><?php echo substr($d->description,0 , 250) ?></td>
+                        <td><?php echo $d->etatToString() ?></td>
+                        <td><a href="<?php echo base_url() ?>index.php?devis_controller/show/<?php echo $d->numero ?>html">Aperçu</a></td>
+                        <td><a href="<?php echo base_url() ?>index.php?devis_controller/edit/<?php echo $d->numero ?>">Editer</a></td>
+                   </tr>';
+                <?php endforeach ?>
             </table>
         </div>
     </div>

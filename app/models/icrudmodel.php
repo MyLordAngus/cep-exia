@@ -8,6 +8,6 @@ interface  ICrudModel {
     public function select($idObject);
     public function insert($model);
     public function update($model);
-    public function selectAll();
+    public static function selectAll($db);
     public function getType();
 }

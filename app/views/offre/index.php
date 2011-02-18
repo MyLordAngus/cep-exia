@@ -32,7 +32,7 @@
 	    foreach($offres as $offre):
 	?>
 	<li>
-	    <a href="<?php echo URL_BASE."index.php/offres_controller/description/offre-".$offre->numero;?>.html">
+	    <a href="<?php echo URL_BASE."index.php/offres_controller/description/".$offre->numero;?>">
 		<span class="grid_2 alpha">&nbsp;&nbsp;&nbsp;<?php echo $offre->date;?></span>
 		<div class="grid_9 ">
 		    <h6><?php echo $offre->titre ?></h6>

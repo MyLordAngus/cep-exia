@@ -49,4 +49,7 @@ class Prestataire_controller extends CI_Controller{
 	redirect('prestataire_controller');
     }
 
+    public function show($idPrestataire){
+	
+    }
 }

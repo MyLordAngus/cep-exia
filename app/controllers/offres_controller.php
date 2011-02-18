@@ -74,7 +74,7 @@ class Offres_controller extends CI_Controller {
     }
 
     public function description($idOffre){
-        $this->offreDAO->select($idOffre);echo $idOffre;
+        $this->offreDAO->select($idOffre);
         $data['titre'] = $this->offreDAO->titre;
 	$data['userType'] = $this->session->userdata('type');
         //Infos Entreprise

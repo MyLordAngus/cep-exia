@@ -7,7 +7,7 @@
             </div>
             <ul>
                 <li>
-                    <a href="<?php echo URL_BASE;?>index.php/resume-entreprise-<?php echo $entreprise->ID;?>.html">
+                    <a href="<?php echo URL_BASE;?>index.php/entreprise_controller/show/<?php echo $entreprise->ID;?>">
 			<?php
 			echo $entreprise->raisonSoc;
 			?>

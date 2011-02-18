@@ -42,5 +42,14 @@ class Entreprise_controller extends CI_Controller {
         $this->userDAO->update($Entreprise);
         $this->index();
     }
-    
+
+    public function show($idEntreprise){
+//        $Entreprise = new Entreprise();
+	$this->userDAO->select($idEntreprise);
+	$data['entreprise'] = $this->userDAO;
+	$data['contenu'] = 'user/entreprise/resume';
+	$data['titre'] = "Entreprise \"".$this->userDAO.'"';
+	$data['menu'] = Menu::get();
+	$this->load->view('inc/template', $data);
+    }
 }
