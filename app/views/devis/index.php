@@ -17,7 +17,7 @@
                 </li>
                 <li class="grid_5">
                     Catégorie :
-                    <?php echo $offre->Categorie->toString();?>
+                    <?php echo $offre->Categorie ?>
                 </li>
                 <li class="grid_5">
                     Montant moyen :

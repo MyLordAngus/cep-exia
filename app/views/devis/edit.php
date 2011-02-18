@@ -4,13 +4,13 @@
         <h4>L'offre</h4>
         <ol>
             <li>
-               <?php echo $devis->Offre->titre; ?>
+               <?php echo $devis->Offre->titre ?>
             </li>
             <li>
-               <?php echo $devis->Offre->Categorie->toString(); ?>
+               <?php echo $devis->Offre->Categorie ?>
             </li>
             <li>
-               <?php echo $devis->Offre->Entreprise->raisonSoc; ?>
+               <?php echo $devis->Offre->Entreprise->raisonSoc ?>
             </li>
         </ol>
     </div>
