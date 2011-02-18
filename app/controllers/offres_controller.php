@@ -30,6 +30,8 @@ class Offres_controller extends CI_Controller {
         $data['titre'] = "Offres";
         $data['contenu'] = "offre/index";
         $data['menu'] = Menu::get();
+	$data['categories'] = Categorie::selectAll($this->db);
+
         $this->load->view("inc/template", $data);
 
     }
@@ -42,6 +44,7 @@ class Offres_controller extends CI_Controller {
         $data['titre'] = "Offres";
         $data['contenu'] = "offre/index";
         $data['menu'] = Menu::get();
+	$data['categories'] = Categorie::selectAll($this->db);
         $this->load->view("inc/template", $data);
 
     }
@@ -68,6 +71,7 @@ class Offres_controller extends CI_Controller {
             redirect('offres/description/offre-'.$this->offreDAO->numero);
         }
     }
+
     public function description($idOffre){
         $this->offreDAO->select($idOffre);
         $data['titre'] = $this->offreDAO->titre;
