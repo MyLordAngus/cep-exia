@@ -94,11 +94,11 @@
             $this->password = $row->Password;
             $this->email = $row->Email;
             $this->siret = $row->Siret;
-            $this->telephone = $row->Telephone;
+            $this->telephone = $row->Telephone;/*
             $requete = $this->db->get_where('droits', array('type_compte' => $this->getType()));
             foreach ($requete->result() as $droit){
                 array_push ($this->listeDroits, $droit);
-            }
+            }*/
         }
 
         public function selectAll() {

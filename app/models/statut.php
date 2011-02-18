@@ -1,5 +1,5 @@
 <?php
-class Statut{
+class Statut implements ICrudModel{
 	private $ID;
 	private $libelle;
         private $db;
@@ -49,5 +49,17 @@ class Statut{
         public function toString(){
             return $this->libelle;
         }
+
+    public function getType() {
+        return __CLASS__;
+    }
+
+    public function insert($model) {
+        echo "Not implemented";exit();
+    }
+
+    public function update($model) {
+        echo "Not implemented";exit();
+    }
 }
 ?>

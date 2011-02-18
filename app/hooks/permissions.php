@@ -1,21 +1,25 @@
 <?php
 
-	$permissions = array();
-	$doesNotRequireAuth = array();
-	
-	$doesNotRequireAuth['Site_controller']['index']=true;
-	$doesNotRequireAuth['Login_controller']['index']=true;
-	$doesNotRequireAuth['Login_controller']['sinscrire']=true;
-	$doesNotRequireAuth['Offres_controller']['index']=true;
-	$doesNotRequireAuth['Offres_controller']['page']=true;
-	$permissions['auth']['Site_controller']['deconnexion']=true;
-	$permissions['prestataire']['Devis_controller']['add']=true;
-	$permissions['prestataire']['Devis_controller']['edit']['owner']=true;
-	$permissions['prestataire']['Offres_controller']['desc']=true;
-	$permissions['entreprise']['Offres_controller']['add']=true;
-	$permissions['entreprise']['Offres_controller']['edit']['owner']=true;
-	$permissions['entreprise']['Devis_controller']['index']['owner']=true;
-	$permissions['entreprise']['Entreprise_controller']['index']=true;
-	$permissions['entreprise']['Entreprise_controller']['edit']['owner']=true;
-	$permissions['prestataire']['Prestataire_controller']['index']=true;
-	$permissions['prestataire']['Prestataire_controller']['edit']['owner']=true;
+    $doesNotRequireAuth = array();
+    $permissions = array();
+
+    //ne requiert aucune authentification
+    $doesNotRequireAuth['site_controller']['index']=TRUE;
+    $doesNotRequireAuth['login_controller']['index']=TRUE;
+    $doesNotRequireAuth['login_controller']['sinscrire']=TRUE;
+    $doesNotRequireAuth['offres_controller']['index']=TRUE;
+
+    //permissions utilisateur
+    $permissions['prestataire']['site_controller']['deconnexion']=TRUE;
+    $permissions['entreprise']['site_controller']['deconnexion']=TRUE;
+    $permissions['prestataire']['prestataire_controller']['index']=TRUE;
+    $permissions['prestataire']['prestataire_controller']['save']=TRUE;
+    $permissions['entreprise']['entreprise_controller']['index']=TRUE;
+    $permissions['entreprise']['entreprise_controller']['save']=TRUE;
+    $permissions['prestataire']['offres_controller']['description']=TRUE;
+    $permissions['entreprise']['offres_controller']['add']=TRUE;
+    $permissions['prestataire']['devis_controller']['add']=TRUE;
+    $permissions['prestataire']['devis_controller']['edit']=TRUE;
+    $permissions['entreprise']['devis_controller']['index']=TRUE;
+    $permissions['entreprise']['site_controller']['resumePrestataire']=TRUE;
+    $permissions['prestataire']['site_controller']['resumeEntreprise']=TRUE;

@@ -40,6 +40,7 @@
 
 $route['default_controller'] = "Site_controller";
 //SITE
+
 $route['site'] = "Site_controller";
 $route['site/deconnexion'] = "Site_controller/deconnexion";
 //OFFRE

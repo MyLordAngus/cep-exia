@@ -1,31 +1,57 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); 
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/**
+ * Description of Accesscheck
+ *
+ * @author SuperBen
+ */
+class Accesscheck {
 
-class Accesscheck{
-	
-	
-	public function __construct(){
-		;
-	}
-	
-	public function index($params){
-		require_once('permissions.php');
-		$routing =& load_class('Router');
-		$class = $routing->fetch_class();
-		$method = $routing->fetch_method();
-		
-		
-		if(!empty($doesNotRequireAuth[$class][$method]))
-			return TRUE;
-		else{
-			if(!isset($_SESSION['userType'])){
-				if(!empty($permissions[$_SESSION['userType']][$class][$method]) AND
-					$permissions[$_SESSION['userType']][$class][$method]==TRUE){
-					return TRUE;
-				}
-			}
-		}
-		throw new ErrorSession("AUTH", "Vous n'êtes pas authentifié");
-		return FALSE;
-		
-	}
+    private $baseURL;
+    private $class;
+    private $method;
+    
+    public function  __construct() {
+        session_start();
+        $this->baseURL = $GLOBALS['CFG']->config['base_url'];
+        $routing =& load_class('Router');
+        $this->class = strtolower($routing->fetch_class());
+        $this->method = strtolower($routing->fetch_method());
+    }
+
+    public function before($params) {
+        require_once('permissions.php');
+
+        if(!empty($doesNotRequireAuth[$this->class][$this->method])){
+            return TRUE;
+        }
+        else{
+            if(!$_SESSION['userType']){
+                $this->redirect();
+            }
+            else{
+                $userType = $_SESSION['userType'];
+                if(empty ($permissions[$userType][$this->class][$this->method]) OR
+                        $permissions[$userType][$this->class][$this->method] != TRUE){
+                    $this->redirect();
+                }
+            }
+        }
+        $this->redirect();
+    }
+
+    public function after($params) {
+        $_SESSION['lastPage'] = "{$this->baseURL}index.php/{$this->class}/{$this->method}";
+    }
+
+    private function redirect($login=NULL) {
+        $_SESSION['error'][] = "Vous devez Ãªtre connectÃ©";
+        if (!$login) {
+            if(isset ($_SESSION['lastPage'])){
+                header("location: {$_SESSION['lastPage']}");
+                exit;
+            }
+        }
+        header("location: {$this->baseURL}index.php/login.html");
+        exit;
+    }
 }

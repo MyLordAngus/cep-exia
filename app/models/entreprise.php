@@ -81,7 +81,7 @@
 			
 		}
 
-		/*** Méthodes de sérialisation ***/
+		/*** Méthodes de sérialisation **
 		public function __sleep(){
 			foreach($this->listeOffres as $Offre){
 				$Offre = serialize($Offre);
@@ -91,6 +91,6 @@
 		
 		public function __wakeup(){
 			$this->listeOffres = unserialize($this->listeOffres);
-		}
+		}*/
 	}
 ?>

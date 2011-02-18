@@ -11,10 +11,15 @@
 */
 $hook['pre_controller'] = array(
                                 'class'    => 'Accesscheck',
-                                'function' => 'index',
+                                'function' => 'before',
                                 'filename' => 'accesscheck.php',
                                 'filepath' => 'hooks');
 
+$hook['post_system'] = array(
+                                'class'    => 'Accesscheck',
+                                'function' => 'after',
+                                'filename' => 'accesscheck.php',
+                                'filepath' => 'hooks');
 
 /* End of file hooks.php */
 /* Location: ./application/config/hooks.php */

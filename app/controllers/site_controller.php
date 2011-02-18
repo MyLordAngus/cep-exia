@@ -43,6 +43,7 @@ class Site_controller extends CI_Controller {
 
     public function deconnexion(){
         $this->session->sess_destroy();
+        session_destroy();
         redirect();
     }
 

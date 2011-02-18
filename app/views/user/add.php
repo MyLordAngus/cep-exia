@@ -52,7 +52,7 @@
 						</p>
 						<p>
 							<label for="adresse">Adresse</label>
-							<textarea class="required" name="adresse" cols="40" rows="2"></textarea>
+							<textarea class="required" name="adresse" cols="60" rows="2"></textarea>
 						</p>
 						<p>
 							<label for="cp">Code postal</label>

@@ -101,7 +101,7 @@
 			return $this->listeDevis;
 		}
 
-		/*** Sérialisation ***/
+		/*** Sérialisation **
 		public function __sleep(){
 			foreach($this->listeCompetences as $Competence){
 				$Competence = serialize($Competence);
@@ -118,7 +118,7 @@
 		public function __wakeup(){
 			$this->listeOffres = unserialize($this->listeOffres);
 			$this->listeDevis = unserialize($this->LlisteDevis);
-		}
+		}*/
 		
 	}
 ?>
