@@ -26,7 +26,7 @@ class Accesscheck {
         }
         else{
             if(!$_SESSION['userType']){
-                $this->redirect();
+                $this->redirect($login=TRUE);
             }
             else{
                 $userType = $_SESSION['userType'];
