@@ -8,40 +8,41 @@
             <ul>
                 <li>
                     <a href="<?php echo URL_BASE;?>index.php/resume-entreprise-<?php echo $entreprise->ID;?>.html">
-                        <?php
-                        echo $entreprise->raisonSoc;
-                        ?>
+			<?php
+			echo $entreprise->raisonSoc;
+			?>
                     </a>
                 </li>
                 <li>
-                    <?php echo $entreprise->email;?>
-                </li>
-                <li>
-                    <?php echo "\n".$entreprise->adresse.", ".$entreprise->codePostal."\n".$entreprise->ville?>
-                </li>
-                <li>
-                    Tel :
-                    <?php echo $entreprise->telephone;?>
-                </li>
-                <li>
-                    Catégorie :
-                    <?php echo $offre->Categorie->toString();?>
-                </li>
-            </ul>
-        </div>
-        <div class="grid_12 omega shadow-5 radius-5">
-            <div class="grid_11">
-                <h3>Offre : <?php echo $offre->titre; ?></h3>
-                <p>Déposée le <?php echo $offre->date; ?></p
-                <p><?php echo $offre->description;?></p>
-                <p class="grid_8"></p>
+		    <?php echo $entreprise->email;?>
+                    </li>
+                    <li>
+		    <?php echo "\n".$entreprise->adresse.", ".$entreprise->codePostal."\n".$entreprise->ville?>
+                    </li>
+                    <li>
+                        Tel :
+		    <?php echo $entreprise->telephone;?>
+                    </li>
+                    <li>
+                        Catégorie :
+		    <?php echo $offre->Categorie;?>
+                    </li>
+                </ul>
             </div>
-            <div>
-                <?php if($userType == 'prestataire'){?>
-                    <a href="<?php echo base_url()."index.php/devis_controller/add/". $offre->numero; ?>">
-                        <h4>Postuler ici</h4>
-                    </a>
-                <?php }; ?>
+            <div class="grid_12 omega shadow-5 radius-5">
+                <div class="grid_11">
+                    <h3>Offre : <?php echo $offre->titre;?></h3>
+                    <p>Déposée le <?php echo $offre->date;?></p
+                    <p><?php echo $offre->description;?></p>
+                    <p class="grid_8"></p>
+                </div>
+                <div>
+		<?php if($userType == 'prestataire'){
+?>
+	    		<a href="<?php echo base_url()."index.php/devis_controller/add/".$offre->numero;?>">
+	    		    <h4>Postuler ici</h4>
+	    		</a>
+<?php };?>
             </div>
         </div>
     </div>

@@ -104,8 +104,8 @@
                     echo '<tr>
                             <td>'.$o->titre.'</td>
                             <td>'.$o->montantMoyen().'</td>
-                            <td >'.$o->Categorie->toString().'</td>
-                            <td >'.$o->Statut->toString().'</td>
+                            <td >'.$o->Categorie.'</td>
+                            <td >'.$o->Statut.'</td>
                             <td>'.$o->compteDevis().'</td>
                             <td><a href="'.base_url()."index.php/offres_controller/edit/".$o->numero.'">
                                 Editer

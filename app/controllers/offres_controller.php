@@ -54,12 +54,13 @@ class Offres_controller extends CI_Controller {
         if(!$this->form_validation->run('offres_add')){
             if(validation_errors ())
                 $data['messages']['error'] = validation_errors ();
-            $data['titre'] = "Edition de l'offre \"".$this->offreDAO->titre.'"';
+
+	    $data['titre'] = "Edition de l'offre \"".$this->offreDAO->titre.'"';
             $data['offre'] = $this->offreDAO;
             $data['contenu'] = 'offre/edit';
             $data['menu'] = Menu::get();
             $cat = new Categorie();
-            $data['categories'] = $cat->selectAll();
+            $data['categories'] = $cat->selectAll($this->db);
             $this->load->view('inc/template', $data);
         }
         else{
@@ -68,14 +69,14 @@ class Offres_controller extends CI_Controller {
             $offre->description = $this->input->post('description');
             $offre->Categorie->ID = $this->input->post('categorie');
             $this->offreDAO->update($offre);
-            redirect('offres/description/offre-'.$this->offreDAO->numero);
+            redirect('offres_controller/description/'.$this->offreDAO->numero);
         }
     }
 
     public function description($idOffre){
-        $this->offreDAO->select($idOffre);
+        $this->offreDAO->select($idOffre);echo $idOffre;
         $data['titre'] = $this->offreDAO->titre;
-		$data['userType'] = $this->session->userdata('type');
+	$data['userType'] = $this->session->userdata('type');
         //Infos Entreprise
         $data['entreprise'] = $this->offreDAO->Entreprise;
         $data['offre'] = $this->offreDAO;

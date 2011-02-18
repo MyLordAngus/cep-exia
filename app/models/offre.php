@@ -79,7 +79,7 @@ class Offre implements ICrudModel{
 	    'IDStatut' => $model->Statut->ID,
 	    'Description' => $model->description);
 	$this->db->where('ID', $model->numero);
-	$this->db->update('Offres', $data);
+	$this->db->update('offres', $data);
     }
 
     /*     * * Renvoie le nombre d'Offres dans la base de données ** */
@@ -114,8 +114,8 @@ class Offre implements ICrudModel{
 	$db = get_instance()->db;
 	$listeOffres = array();
 	$db->select('*')
-	    ->from('offres')->join('entreprises', 'entreprises.ID = offres.IDEntreprise')
-	    ->where('offres.ID != ', 0);
+		->from('offres')->join('entreprises', 'entreprises.ID = offres.IDEntreprise')
+		->where('offres.ID != ', 0);
 
 	if(!empty($raisonSoc))
 	    $db->where('entreprises.raisonSoc LIKE ', "'%".$raisonSoc."%'", FALSE);
