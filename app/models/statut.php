@@ -42,7 +42,7 @@ class Statut implements ICrudModel{
 
     /*     * * Méthodes d'accès à la base de données ** */
 
-    public function selectAll(){
+    public static function selectAll($db){
 	$listeStatuts = array();
 	$requete = $this->db->get_where('statuts');
 	foreach($this->db->result($requete) as $reqStatut){
