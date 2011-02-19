@@ -91,7 +91,7 @@ class Devis implements ICrudModel{
         return __CLASS__;
     }
 
-    public function selectAll() {
+    public static function selectAll($db) {
 
     }
 }

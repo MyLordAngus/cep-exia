@@ -28,7 +28,7 @@
     }
 
     /*** Méthodes d'accès à la base de données ***/
-    public function selectAll(){
+    public static function selectAll($db){
         $listeCompetences = array();
         $requete = $this->db->get_where('competences');
         foreach($requete->result() as $reqCompetence){
