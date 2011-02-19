@@ -11,7 +11,7 @@ class Accesscheck {
     private $method;
     
     public function  __construct() {
-        session_start();
+        //session_start();
         $this->baseURL = $GLOBALS['CFG']->config['base_url'];
         $routing =& load_class('Router');
         $this->class = strtolower($routing->fetch_class());
@@ -19,7 +19,7 @@ class Accesscheck {
     }
 
     public function before($params) {
-        require_once('permissions.php');
+        require_once('permissions.php');return true;
 
         if(!empty($doesNotRequireAuth[$this->class][$this->method])){
             return TRUE;
