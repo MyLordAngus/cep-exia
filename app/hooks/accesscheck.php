@@ -11,7 +11,7 @@ class Accesscheck {
     private $method;
     
     public function  __construct() {
-        //session_start();
+        session_start();
         $this->baseURL = $GLOBALS['CFG']->config['base_url'];
         $routing =& load_class('Router');
         $this->class = strtolower($routing->fetch_class());
@@ -19,38 +19,34 @@ class Accesscheck {
     }
 
     public function before($params) {
-        require_once('permissions.php');return true;
+        require_once('permissions.php');
 
         if(!empty($doesNotRequireAuth[$this->class][$this->method])){
-            return TRUE;
+            return true;
         }
         else{
-            if(!$_SESSION['userType']){
-                $this->redirect($login=TRUE);
+            if(!isset($_SESSION['user'])){
+                echo "coucou1";exit;
+                //$this->redirect(2);
             }
             else{
-                $userType = $_SESSION['userType'];
+                $user = (object)$_SESSION['user'];
+                $userType = $user->type;
+                echo $userType;exit;
                 if(empty ($permissions[$userType][$this->class][$this->method]) OR
-                        $permissions[$userType][$this->class][$this->method] != TRUE){
-                    $this->redirect();
+                        $permissions[$userType][$this->class][$this->method] != true){
+                    //$this->redirect(3);
                 }
             }
         }
-        $this->redirect();
+        //$this->redirect(1);
     }
 
     public function after($params) {
-        $_SESSION['lastPage'] = "{$this->baseURL}index.php/{$this->class}/{$this->method}";
+        get_instance()->form_validation->set_error_delimiters('<p class="error">', '</p>');
     }
 
-    private function redirect($login=NULL) {
-        $_SESSION['error'][] = "Vous devez être connecté";
-        if (!$login) {
-            if(isset ($_SESSION['lastPage'])){
-                header("location: {$_SESSION['lastPage']}");
-                exit;
-            }
-        }
+    private function redirect(int $error) {
         header("location: {$this->baseURL}index.php/login.html");
         exit;
     }

@@ -7,12 +7,9 @@
 class Login_controller extends CI_Controller {
     public function  __construct() {
         parent::__construct();
-        $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+        
     }
     public function index(){
-		if(!empty($_SESSION['error'])){
-			
-		}
         if($this->form_validation->run('login')){
             $user = Compte::connexion($this->input->post('login'),  $this->input->post('mdp'));
             if($user){
@@ -20,15 +17,16 @@ class Login_controller extends CI_Controller {
                     'id' => $user->ID,
                     'login' => $user->login,
                     'type' => $user->getType(),
-                    'isLoged' => true,
-                    'listeDroits' => $user->listeDroits
+                    'isLoged' => true
                 );
-				$_SESSION['userType'] = $user->getType();
-                $this->session->set_userdata($data);
-                if($this->session->flashdata('redirect'))
+                $_SESSION['user'] = $data;
+                //$this->session->set_userdata($data);
+                /*if($this->session->flashdata('redirect'))
                     redirect ($this->session->flashdata('redirect'));
                 else
                     redirect($user->getType().'_controller');
+                 * 
+                 */
             }
             else{
                 $data['messages']['error'] = "Combinaison login+mot-de-passe invalide.";
@@ -44,6 +42,26 @@ class Login_controller extends CI_Controller {
         $data['contenu'] = "user/auth";
         $this->load->view('inc/template', $data);
     }
+
+    public function refuse(int $param) {
+        switch ($param) {
+            case 1:
+                $data['error'] = "Vous ne possèdez pas les permissions requises.";
+                break;
+
+            case 2:
+                $data['error'] = "Vous n'êtes pas connecté";
+                break;
+
+            case 3:
+                $data['error'] = "Vous n'avez pas acces à cette partie";
+                break;
+
+            default:
+                break;
+        }
+    }
+
     public function sinscrire($type=""){
         if($this->form_validation->run()){
             if($type == 'entreprise'){

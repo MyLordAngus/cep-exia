@@ -15,7 +15,7 @@ $hook['pre_controller'] = array(
                                 'filename' => 'accesscheck.php',
                                 'filepath' => 'hooks');
 
-$hook['post_system'] = array(
+$hook['post_controller'] = array(
                                 'class'    => 'Accesscheck',
                                 'function' => 'after',
                                 'filename' => 'accesscheck.php',
