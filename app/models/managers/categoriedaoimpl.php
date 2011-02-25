@@ -1,12 +1,9 @@
 <?php
 
-class CategorieDAOImpl implements CepDAO{
-
-	private $db;
+class CategorieDAOImpl extends AbstractCepDAO implements CategorieDAO{
 
 	public function __construct(){
-		$this->db = &get_instance()->db;
-		
+		parent::__construct();
 	}
 
 	public function select(int $idObject){
@@ -32,13 +29,4 @@ class CategorieDAOImpl implements CepDAO{
 		}
 		return $listeCategories;
 	}
-	
-	public function update(object $model){
-		echo __METHOD__." is not implemented";exit;
-	}
-	public function insert(object $model){
-		echo __METHOD__." is not implemented";exit;
-	}
 }
-
-?>
