@@ -2,30 +2,27 @@
 
 class Prestataire extends Compte{
 
-	private $nom;
-	private $prenom;
-	private $listeCompetences;
-	private $listeDevis;
+    private $nom;
+    private $prenom;
+    private $listeCompetences;
+    private $listeDevis;
 
-	public function __construct(){
-	
-	}
+    public function  __construct() {
+        parent::__construct();
+        $this->mapping['table'] = 'prestataires';
+        $this->mapping['hasMany'][] = 'Devis';
+        //$this->mapping['hasMany'][] = 'Competence';
+    }
 
-	/*	 * * Accesseur ** */
+    public function __get($attribut){
+            return $this->$attribut;
+    }
+    public function __set($attribut, $valeur){
+            $this->$attribut = $valeur;
+    }
+    public function __toString() {
 
-	public function __get($attribut){
-		return $this->$attribut;
-	}
-
-	/*	 * * Mutateur ** */
-
-	public function __set($attribut, $valeur){
-		$this->$attribut = $valeur;
-	}
-
-	public function getType(){
-		return strtolower(__CLASS__);
-	}
+    }
 }
 
 ?>

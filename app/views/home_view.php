@@ -6,7 +6,7 @@
             foreach($offres as $offre){
         ?>
             <li>
-                <a href="<?php echo base_url()."index.php/offres/description/offre-".$offre->numero; ?>.html">
+                <a href="<?php echo base_url()."index.php/offres/description/offre-".$offre->id; ?>.html">
                     <div class="grid_6 alpha">
                         <h6><?php echo $offre->titre; ?></h6>
                         <span>

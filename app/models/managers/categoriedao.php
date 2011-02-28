@@ -1,6 +1,6 @@
 <?php
 
 interface CategorieDAO{
-	public function select(int $id);
+	public function select($id);
 	public function selectAll();
 }

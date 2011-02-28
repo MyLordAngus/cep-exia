@@ -11,7 +11,7 @@
 */
 $hook['pre_controller'] = array(
                                 'class'    => 'Accesscheck',
-                                'function' => 'before',
+                                'function' => 'after',
                                 'filename' => 'accesscheck.php',
                                 'filepath' => 'hooks');
 

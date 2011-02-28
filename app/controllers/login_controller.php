@@ -5,28 +5,21 @@
  * @author SuperBen
  */
 class Login_controller extends CI_Controller {
+    private $usersessionDAO;
+    
+
     public function  __construct() {
         parent::__construct();
-        
+        $this->usersessionDAO = new UserSessionDAOImpl();
     }
     public function index(){
         if($this->form_validation->run('login')){
-            $user = Compte::connexion($this->input->post('login'),  $this->input->post('mdp'));
+            $user = $this->usersessionDAO->connexion($this->input->post('login'),
+                                                     $this->input->post('mdp'));
             if($user){
-                $data = array(
-                    'id' => $user->ID,
-                    'login' => $user->login,
-                    'type' => $user->getType(),
-                    'isLoged' => true
-                );
-                $_SESSION['user'] = $data;
-                //$this->session->set_userdata($data);
-                /*if($this->session->flashdata('redirect'))
-                    redirect ($this->session->flashdata('redirect'));
-                else
-                    redirect($user->getType().'_controller');
-                 * 
-                 */
+                $_SESSION['user'] = $user;
+                $user = AbstractEntity::cast($user);
+                redirect(strtolower($user->getClassName()));
             }
             else{
                 $data['messages']['error'] = "Combinaison login+mot-de-passe invalide.";

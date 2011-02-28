@@ -1,24 +1,19 @@
 <?php
-	class Competence{
-		private $ID;
-		private $libelle;
-		
+class Competence extends AbstractEntity{
+    private $libelle;
+
     public function __construct(){
-	
+	$this->mapping['table'] = 'competences';
     }
 
-    /*** Accesseur ***/
+
     public function __get($attribut){
-        return $this->$attribut;
+            return $this->$attribut;
     }
-
-    /*** Mutateur ***/
     public function __set($attribut, $valeur){
-        $this->$attribut = $valeur;
+            $this->$attribut = $valeur;
     }
+    public function __toString() {
 
-    public function getType() {
-        return __CLASS__;
     }
 }
-?>

@@ -8,7 +8,8 @@ abstract class AbstractEntity {
     protected $id;
     protected $mapping = array(
                             'hasOne'=>array(),
-                            'hasMany'=>array()
+                            'hasMany'=>array(),
+                            'table'=>null
                         );
 
     public function __get($attribut){
@@ -17,17 +18,22 @@ abstract class AbstractEntity {
     public function __set($attribut, $valeur){
             $this->$attribut = $valeur;
     }
-    public function getType() {
-        return __CLASS__;
+    public function getClassName() {
+        $object = new ReflectionObject($this);
+        return $object->getName();
     }
-    abstract public function __toString();
     public function getHasOne() {
         return $this->mapping['hasOne'];
     }
     public function getHasMany() {
         return $this->mapping['hasMany'];
     }
-   public static function cast(AbstractEntity $object) {
+    public static function cast(AbstractEntity $object) {
        return $object;
-   }
+    }
+    public function getMappedTable() {
+       return $this->mapping['table'];
+    }
+    
+    abstract public function __toString();
 }

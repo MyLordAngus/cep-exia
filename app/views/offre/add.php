@@ -35,7 +35,7 @@
             <?php
                     foreach($categories as $Categorie){
             ?>
-                            <option value="<?php echo $Categorie->ID; ?>" ><?php echo $Categorie->libelle; ?></option>
+                            <option value="<?php echo $Categorie->id; ?>" ><?php echo $Categorie->libelle; ?></option>
             <?php
                     }
             ?>

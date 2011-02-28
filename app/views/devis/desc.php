@@ -4,7 +4,7 @@
 			<h4 class="entete-boite shadow-5 radius-5">Fiche offre : <?php echo $devis->Offre->titre;?></h4>
             <ul>
                 <li>
-                    <a href="<?php echo URL_BASE ?>index.php/entreprise_controller/show/<?php echo $devis->Offre->Entreprise->ID ?>">
+                    <a href="<?php echo URL_BASE ?>index.php/entreprise_controller/show/<?php echo $devis->Offre->Entreprise->id ?>">
                         <?php
                         echo $devis->Offre->Entreprise->raisonSoc;
                         ?>

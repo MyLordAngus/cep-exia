@@ -1,33 +1,27 @@
 <?php
 
-abstract class Compte{
+class Compte extends AbstractEntity{
+    protected $login;
+    protected $password;
+    protected $email;
+    protected $siret;
+    protected $telephone;
+    protected $type;
 
-	protected $ID;
-	protected $login;
-	protected $password;
-	protected $email;
-	protected $siret;
-	protected $telephone;
+    public function __construct(){
+        $this->mapping['table'] = 'comptes';
+    }
 
-	public function __construct(){
-	
-	}
 
-	/*	 * * Accesseur ** */
+    public function __get($attribut){
+            return $this->$attribut;
+    }
+    public function __set($attribut, $valeur){
+            $this->$attribut = $valeur;
+    }
+    public function __toString() {
 
-	public function __get($attribut){
-		return $this->$attribut;
-	}
-
-	/*	 * * Mutateur ** */
-
-	public function __set($attribut, $valeur){
-		$this->$attribut = $valeur;
-	}
-
-	public function getType(){
-		return strtolower(__CLASS__);
-	}
+    }
 }
 
 ?>

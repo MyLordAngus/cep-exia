@@ -10,7 +10,7 @@
 	    <label for="categorie">Catégorie</label>
 	    <select name="categorie" id="categorie" ><option value="">...</option>
 		<?php foreach($categories as $categorie):?>
-    		<option value="<?php echo $categorie->ID?>"><?php echo $categorie?></option>
+    		<option value="<?php echo $categorie->id?>"><?php echo $categorie?></option>
 		<?php endforeach;?>
     	    </select>
     	    <input type="submit" value="Rechercher" />
@@ -32,8 +32,8 @@
 	    foreach($offres as $offre):
 	?>
 	<li>
-	    <a href="<?php echo URL_BASE."index.php/offres_controller/description/".$offre->numero;?>">
-		<span class="grid_2 alpha">&nbsp;&nbsp;&nbsp;<?php echo $offre->date;?></span>
+	    <a href="<?php echo URL_BASE."index.php/offres/description/offre-".$offre->id;?>.html">
+		<span class="grid_2 alpha">&nbsp;&nbsp;&nbsp;<?php echo date('d/m/y', $offre->date);?></span>
 		<div class="grid_9 ">
 		    <h6><?php echo $offre->titre ?></h6>
 		    <p>

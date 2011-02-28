@@ -1,34 +1,12 @@
 <?php
-	class CompetenceDAOImpl implements CepDAO{
-		private $db;
-		
-    public function __construct(){
-        $this->db = &get_instance()->db;
-    }
+class CompetenceDAOImpl extends AbstractCepDAO implements CompetenceDAO{
 
+    public function  __construct() {
+        parent::__construct();
+    }
     public function selectAll(){
-        $listeCompetences = array();
-        $requete = $this->db->get_where('competences');
-        foreach($requete->result() as $reqCompetence){
-                $Competence = new Competence();
-                $Competence->ID = $reqCompetence->ID;
-                $Competence->libelle = $reqCompetence->Libelle;
-                array_push($listeCompetences, $Competence);
-        }
-        return $listeCompetences;
+        $c = new Competence();
+        return $this->dbTemplate->loadAll($c->getClassName());
     }
-
-    public function insert(object $model) {
-        echo "Not implemented";exit();
-    }
-
-    public function select(int $idObject) {
-        echo "Not implemented";exit();
-    }
-
-    public function update(object $model) {
-        echo "Not implemented";exit();
-    }
-
 }
 ?>

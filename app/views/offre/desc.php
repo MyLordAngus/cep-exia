@@ -7,7 +7,7 @@
             </div>
             <ul>
                 <li>
-                    <a href="<?php echo URL_BASE;?>index.php/entreprise_controller/show/<?php echo $entreprise->ID;?>">
+                    <a href="<?php echo URL_BASE;?>index.php/entreprise_controller/show/<?php echo $entreprise->id;?>">
 			<?php
 			echo $entreprise->raisonSoc;
 			?>
@@ -37,12 +37,11 @@
                     <p class="grid_8"></p>
                 </div>
                 <div>
-		<?php if($userType == 'prestataire'){
-?>
-	    		<a href="<?php echo base_url()."index.php/devis_controller/add/".$offre->numero;?>">
+		<?php if($userType == 'Prestataire'){?>
+	    		<a href="<?php echo base_url()."index.php/devis_controller/add/".$offre->id;?>">
 	    		    <h4>Postuler ici</h4>
 	    		</a>
-<?php };?>
+                <?php };?>
             </div>
         </div>
     </div>

@@ -1,30 +1,21 @@
 <?php
 
-class Categorie{
+class Categorie extends AbstractEntity{
+    private $libelle;
 
-	private $ID;
-	private $libelle;
+    public function __construct(){
+        $this->mapping['table'] = 'categories';
+    }
+    public function __get($attribut){
+            return $this->$attribut;
+    }
+    public function __set($attribut, $valeur){
+            $this->$attribut = $valeur;
+    }
 
-	public function __construct(){
-	
-	}
-
-	/*	 * * Accesseur ** */
-
-	public function __get($attribut){
-		return $this->$attribut;
-	}
-
-	/*	 * * Mutateur ** */
-
-	public function __set($attribut, $valeur){
-		$this->$attribut = $valeur;
-	}
-
-	public function __toString(){
-		return $this->libelle;
-	}
-
+    public function __toString(){
+            return $this->libelle;
+    }
 }
 
 ?>

@@ -8,53 +8,53 @@ class Devis_Controller extends CI_Controller{
     public function __construct(){
 	parent::__construct();
 	$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
-	$this->devisDAO = new Devis();
-	$this->offreDAO = new Offre();
+	$this->devisDAO = new DevisDAOImpl();
+	$this->offreDAO = new OffreDAOImpl();
     }
 
     public function index($idOffre){
-	$this->offreDAO->select($idOffre);
-	$this->offreDAO->selectDevis();
+	$o = $this->offreDAO->select($idOffre);
+	$o->listeDevis = $this->offreDAO->selectDevis($o->id);
 	$data['menu'] = Menu::get();
-	$data['offre'] = $this->offreDAO;
+	$data['offre'] = $o;
 	$data['titre'] = "Index des devis";
 	$data['contenu'] = 'devis/index';
 	$this->load->view('inc/template', $data);
     }
 
     public function add($idOffre=1){
-	$this->offreDAO->select($idOffre);
+	$o = $this->offreDAO->select($idOffre);
 	if(!$this->form_validation->run("devis_add")){
-	    $this->offreDAO->selectDevis();
+	    $o->listeDevis = $this->offreDAO->selectDevis($idOffre);
 	    $data['menu'] = Menu::get();
-	    $data['offre'] = $this->offreDAO;
+	    $data['offre'] = $o;
 	    $data['titre'] = "Creation d'un devis";
 	    $data['contenu'] = 'devis/add';
 	    $this->load->view('inc/template', $data);
 	}else{
 	    $Devis = new Devis();
 	    $Devis->montant = $this->input->post('montant');
-	    $Devis->Offre = $this->offreDAO;
-	    $Devis->Prestataire->ID = $this->session->userdata('id');
+	    $Devis->Offre = $o;
+	    $Devis->Prestataire->id = $_SESSION['user']->id;
 	    $Devis->description = $this->input->post('description');
 	    $Devis->duree = $this->input->post('duree');
 	    $this->devisDAO->insert($Devis);
-	    redirect('offres/description/offre-'.$Devis->Offre->numero);
+	    redirect('offres/description/offre-'.$Devis->Offre->id);
 	}
     }
 
     public function edit($idDevis=0){
-	$this->devisDAO->select($idDevis);
+	$d = $this->devisDAO->select($idDevis);
 	if(!$this->form_validation->run("devis_add")){
 	    $data['menu'] = Menu::get();
-	    $data['devis'] = $this->devisDAO;
+	    $data['devis'] = $d;
 	    $data['titre'] = "Creation d'un devis";
 	    $data['contenu'] = 'devis/edit';
 	    $this->load->view('inc/template', $data);
 	}else{
-	    $devis = $this->devisDAO;
+	    $devis = $d;
 	    $devis->montant = $this->input->post('montant');
-	    $devis->Prestataire->ID = $this->session->userdata('id');
+	    $devis->Prestataire->id = $_SESSION['user']->id;
 	    $devis->description = $this->input->post('description');
 	    $devis->duree = $this->input->post('duree');
 	    $this->devisDAO->update($devis);
@@ -76,9 +76,9 @@ class Devis_Controller extends CI_Controller{
     }
 
     public function show($idDevis){
-	$this->devisDAO->select($idDevis);
+	$d = $this->devisDAO->select($idDevis);
 	$data['titre'] = 'Aperçu du devis';
-	$data['devis'] = $this->devisDAO;
+	$data['devis'] = $d;
 	$data['contenu'] = "devis/desc";
 	$data['menu'] = Menu::get();
 	$this->load->view("inc/template", $data);

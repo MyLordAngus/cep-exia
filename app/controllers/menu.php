@@ -8,8 +8,8 @@ class Menu {
     public static function get() {
         $menu = new Menu_DB();
         if(isset($_SESSION['user'])){
-            $user = (object) $_SESSION['user'];
-            if($user->type == 'entreprise')
+            $user = $_SESSION['user'];
+            if($user->getClassName() == 'Entreprise')
                 $menu = $menu->getMenuByCode(array(2,4));
             else
                 $menu = $menu->getMenuByCode(array(3,4));

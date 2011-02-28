@@ -11,7 +11,8 @@ class Accesscheck {
     private $method;
     
     public function  __construct() {
-        session_start();
+        if(!isset($_SESSION))
+            session_start();
         $this->baseURL = $GLOBALS['CFG']->config['base_url'];
         $routing =& load_class('Router');
         $this->class = strtolower($routing->fetch_class());
@@ -43,7 +44,7 @@ class Accesscheck {
     }
 
     public function after($params) {
-        get_instance()->form_validation->set_error_delimiters('<p class="error">', '</p>');
+        //get_instance()->form_validation->set_error_delimiters('<p class="error">', '</p>');
     }
 
     private function redirect(int $error) {

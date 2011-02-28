@@ -77,6 +77,14 @@
                         <input type="text" name="domaine" id="domaine" value="<?php echo $user->domaine?>" disabled />
                     </p>
                 </div>
+				<p class="grid_11"></p>
+				<div class="grid_11">
+					<h6>Description de votre entreprise :</h6>
+					<textarea name="description" rows="4" id="editor1" cols="80"><?php echo $user->description ?></textarea>
+					<script type="text/javascript">
+							CKEDITOR.replace( 'editor1', {toolbar : 'Basic', width : 655, height: 150} );
+					</script>
+				</div>
                 <div class="grid_5 omega">
                     <p>
                         <input type="button" name="modifier" class="modifier" value="Modifier"/>
@@ -88,7 +96,7 @@
             </div>
         </form>
         <div>
-            <h5>Offres déposés :</h5>
+            <h6>Offres déposés :</h6>
             <table id="offres_profil">
                 <thead>
                     <th>Titre</th>
@@ -100,17 +108,17 @@
                     <th></th>
                 </thead>
                 <?php
-                foreach($user->listeOffres as $o){
+                foreach($listeOffres as $o){
                     echo '<tr>
                             <td>'.$o->titre.'</td>
                             <td>'.$o->montantMoyen().'</td>
                             <td >'.$o->Categorie.'</td>
                             <td >'.$o->Statut.'</td>
                             <td>'.$o->compteDevis().'</td>
-                            <td><a href="'.base_url()."index.php/offres_controller/edit/".$o->numero.'">
+                            <td><a href="'.base_url()."index.php/offres_controller/edit/".$o->id.'">
                                 Editer
                             </a></td>
-                            <td><a href="'.base_url()."index.php/devis/tous-les-devis/offre-".$o->numero.'.html">
+                            <td><a href="'.base_url()."index.php/devis/tous-les-devis/offre-".$o->id.'.html">
                                 Voir
                             </a></td>
                        </tr>';

@@ -16,7 +16,7 @@
     </div>
     <div class="grid_12 shadow-5" id="devis_form">
         <h2>Création d'un Devis</h2>
-        <form method="post" action='<?php echo base_url()."index.php/devis_controller/edit/".$devis->numero;?>' >
+        <form method="post" action='<?php echo base_url()."index.php/devis_controller/edit/".$devis->id;?>' >
             <p class="grid_11">
                     <label for="montant">Montant</label>
                     <input type="text" name="montant" maxlength="10" value="<?php echo $devis->montant ?>" /> €
@@ -35,7 +35,7 @@
                     <input type="text" name="duree" maxlength="10" value="<?php echo $devis->duree ?>" />
             </p>
             <p class="grid_11">
-                    <input type="submit" value="Ajouter ce devis à l'offre" />
+                    <input type="submit" value="Sauvegarder" />
             </p>
         </form>
     </div>

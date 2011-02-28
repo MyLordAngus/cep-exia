@@ -23,7 +23,7 @@
     </div>
     <div class="grid_11 shadow-5 radius-5" id="offre_form">
         <h4 class="entete-boite shadow-5 radius-5"><?php echo $titre ?></h4>
-        <form method="post" action='<?php echo base_url()."index.php/offres_controller/edit/".$offre->numero;?>' >
+        <form method="post" action='<?php echo base_url()."index.php/offres_controller/edit/".$offre->id;?>' >
             <br>
             <p class="grid_8">
                     <label for="titre">Titre</label>
@@ -35,7 +35,7 @@
             <?php
                     foreach($categories as $Categorie){
             ?>
-                            <option value="<?php echo $Categorie->ID; ?>" ><?php echo $Categorie->libelle; ?></option>
+                            <option value="<?php echo $Categorie->id; ?>" ><?php echo $Categorie->libelle; ?></option>
             <?php
                     }
             ?>

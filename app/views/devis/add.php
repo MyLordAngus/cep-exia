@@ -33,7 +33,7 @@
     <p class="grid_15"></p>
     <div class="grid_15 shadow-5 radius-5" id="devis_form">
         <h4 class="entete-boite shadow-5 radius-5">Création d'un Devis</h4>
-        <form method="post" action='<?php echo base_url()."index.php/devis_controller/add/".$offre->numero;?>' >
+        <form method="post" action='<?php echo base_url()."index.php/devis_controller/add/".$offre->id;?>' >
             <p class="grid_11">
                     <label for="montant">Montant</label>
                     <input type="text" name="montant" maxlength="10" value="" /> €

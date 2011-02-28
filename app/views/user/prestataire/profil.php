@@ -69,9 +69,9 @@
                     ?>
                             <li><input type="checkbox" 
                                        name="competences[]"
-                                       value="<?php echo $Competence->ID; ?>"
+                                       value="<?php echo $Competence->id; ?>"
                                        <?php
-                                       if(in_array($Competence->libelle, $listeCompetences))
+                                       if(in_array($Competence->id, $userCompetences))
                                                echo 'checked';
                                        ?>
                                        />
@@ -99,10 +99,10 @@
 			<td><?php echo date("d/m/y",$d->date) ?></td>
                         <td><?php echo $d->montant ?></td>
                         <td><?php echo substr($d->description,0 , 250) ?></td>
-                        <td><?php echo $d->etatToString() ?></td>
-                        <td><a href="<?php echo base_url() ?>index.php?devis_controller/show/<?php echo $d->numero ?>html">Aperçu</a></td>
-                        <td><a href="<?php echo base_url() ?>index.php?devis_controller/edit/<?php echo $d->numero ?>">Editer</a></td>
-                   </tr>';
+                        <td><?php echo $d->etat ?></td>
+                        <td><a href="<?php echo base_url() ?>index.php?devis_controller/show/<?php echo $d->id ?>html">Aperçu</a></td>
+                        <td><a href="<?php echo base_url() ?>index.php?devis_controller/edit/<?php echo $d->id ?>">Editer</a></td>
+                   </tr>
                 <?php endforeach ?>
             </table>
         </div>

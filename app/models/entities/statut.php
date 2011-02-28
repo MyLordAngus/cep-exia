@@ -1,33 +1,22 @@
 <?php
 
-class Statut{
+class Statut extends AbstractEntity{
+    private $libelle;
 
-	private $ID;
-	private $libelle;
+    public function __construct(){
+        $this->mapping['table'] = 'statuts';
+    }
 
-	public function __construct(){
-	
-	}
 
-	/*	 * * Accesseur ** */
-
-	public function __get($attribut){
-		return $this->$attribut;
-	}
-
-	/*	 * * Mutateur ** */
-
-	public function __set($attribut, $valeur){
-		$this->$attribut = $valeur;
-	}
-
-	public function __toString(){
-		return $this->libelle;
-	}
-
-	public function getType(){
-		return __CLASS__;
-	}
+    public function __get($attribut){
+            return $this->$attribut;
+    }
+    public function __set($attribut, $valeur){
+            $this->$attribut = $valeur;
+    }
+    public function __toString(){
+            return $this->libelle;
+    }
 }
 
 ?>

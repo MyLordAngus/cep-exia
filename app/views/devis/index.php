@@ -20,10 +20,6 @@
                     <?php echo $offre->Categorie?>
                 </li>
                 <li class="grid_5">
-                    Montant moyen :
-                    <?php echo $offre->montantMoyen()?>
-                </li>
-                <li class="grid_5">
                     Description :
                     <?php echo $offre->description?>
                 </li>
@@ -36,7 +32,7 @@
                     <div class="entete-boite radius-5">
                         <span>
                             Posté le <?php echo $devis->date;?>
-                            par <a href="<?php echo base_url()."index.php/prestataire_controller/show/".$devis->Prestataire->ID;?>">
+                            par <a href="<?php echo base_url()."index.php/prestataire_controller/show/".$devis->Prestataire->id;?>">
                                 <?php echo $devis->Prestataire->prenom;?>
                                 <?php echo $devis->Prestataire->nom;?>
                             </a> d'un montant de 
@@ -48,7 +44,7 @@
                     </div>
                     <div>
                         <?php if($devis->etat == 0): ?>
-                        <a href="<?php echo base_url()."index.php/devis_controller/accepter/". $devis->numero."/".$offre->numero; ?>">
+                        <a href="<?php echo base_url()."index.php/devis_controller/accepter/". $devis->id."/".$offre->id; ?>">
                             <h4>Accepter</h4>
                         </a>
                         <?php elseif($devis->etat == 1): ?>

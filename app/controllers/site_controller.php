@@ -8,13 +8,13 @@ class Site_controller extends CI_Controller {
     private $offreDAO;
     public function  __construct() {
         parent::__construct();
-        $this->offreDAO = new Offre();
+        $this->offreDAO = new OffreDAOImpl();
     }
     public function index(){
         $data['titre'] = "Index";
         $data['contenu'] = 'home_view';
         $data['menu'] = Menu::get();
-        $data['offres'] = $this->offreDAO->selectOffresByPages(0, 6);
+        $data['offres'] = $this->offreDAO->selectLimit(0, 6);
         $data['articles'] = $this->getTumblrPosts();
         $this->load->view('inc/template', $data);
     }
@@ -42,8 +42,8 @@ class Site_controller extends CI_Controller {
     }
 
     public function deconnexion(){
-        $this->session->sess_destroy();
         session_destroy();
+        $this->db->cache_delete_all();
         redirect();
     }
 
