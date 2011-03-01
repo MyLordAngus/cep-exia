@@ -451,8 +451,8 @@ h4.entete-boite{
 }
 .entete-boite a{
 
-	color: #7ebeef;
-	text-decoration: inherit;
+    color: #7ebeef;
+    text-decoration: inherit;
 }
 .entete-boite a:hover{
     text-decoration: underline;
@@ -463,4 +463,33 @@ h4.accepted{
 }
 h4.denied{
     color: red;
+}
+/**
+* Fil d'ariane'
+**/
+#breadcrumb{
+
+}
+#breadcrumb ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#breadcrumb ul li{
+    margin: 0 2px 15px;
+    padding: 0 5px 0 5px;
+    display: block;
+    line-height: 2em;
+    float: left;
+}
+
+#breadcrumb ul li a{
+    margin: 0;
+    font-size: 15px;
+    padding: 0;
+    display: inline;
+}
+#breadcrumb ul li a:hover{
+    color: grey;
 }

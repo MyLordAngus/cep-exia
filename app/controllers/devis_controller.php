@@ -7,7 +7,6 @@ class Devis_Controller extends CI_Controller{
 
     public function __construct(){
 	parent::__construct();
-	$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
 	$this->devisDAO = new DevisDAOImpl();
 	$this->offreDAO = new OffreDAOImpl();
     }

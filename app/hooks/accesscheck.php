@@ -28,26 +28,45 @@ class Accesscheck {
         else{
             if(!isset($_SESSION['user'])){
                 echo "coucou1";exit;
-                //$this->redirect(2);
+                $this->redirect(2);
             }
             else{
-                $user = (object)$_SESSION['user'];
+                $user = $_SESSION['user'];
                 $userType = $user->type;
-                echo $userType;exit;
                 if(empty ($permissions[$userType][$this->class][$this->method]) OR
                         $permissions[$userType][$this->class][$this->method] != true){
-                    //$this->redirect(3);
+                    $this->redirect(3);
                 }
             }
         }
         //$this->redirect(1);
     }
 
-    public function after($params) {
-        //get_instance()->form_validation->set_error_delimiters('<p class="error">', '</p>');
+    public function after() {
+        $form_validation =& get_instance()->form_validation;
+        $form_validation->set_error_delimiters('<p class="error">', '</p>');
+        if(isset($_SESSION['error'])){
+            $data = array();
+            $output =& get_instance()->output;
+            $data['messages']['error'] = $_SESSION['error'];
+            $output->append_output($data);
+            unset ($_SESSION['error']);
+        }
     }
 
     private function redirect(int $error) {
+        switch ($error) {
+            case 1:
+                $_SESSION['error'] = "Vous n'avez pas accès à cette partie du site";
+                break;
+            case 2:
+                $_SESSION['error'] = "Vous devez vous authentifier";
+                break;
+            case 3:
+                $_SESSION['error'] = "Vos droits ne vous permettent pas d'accèder à cette partie";
+                break;
+            default:
+        }
         header("location: {$this->baseURL}index.php/login.html");
         exit;
     }
