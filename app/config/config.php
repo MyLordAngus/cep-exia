@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= "http://localhost.cep-exia/";
+$config['base_url']	= "http://localhost/Jexia/";
 
 /*
 |--------------------------------------------------------------------------
