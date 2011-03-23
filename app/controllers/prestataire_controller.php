@@ -26,9 +26,11 @@ class Prestataire_controller extends CI_Controller{
 	    $data['userCompetences'][] = $c->id;
 	$data['allCompetences'] = $this->competenceDAO->selectAll();
 	$data['devis'] = $this->prestataireDAO->selectOwned($this->user->id);
+	$data['listeRelations'] = $this->prestataireDAO->selectRelations($_SESSION['user']->id);
 	$data['contenu'] = 'user/prestataire/profil';
 	$data['menu'] = Menu::get();
-	$this->load->view('inc/template', $data);$this->output->enable_profiler(true);
+	$this->load->view('inc/template', $data);
+	//$this->output->enable_profiler(true);
     }
 
     public function save(){

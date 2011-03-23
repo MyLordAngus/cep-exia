@@ -10,11 +10,9 @@
     foreach ($messages as $type => $message)
         echo '<p class="'.$type.'">'.$message.'</p>';
 
-    /*if(isset($_SESSION['error'])){
-        foreach ($_SESSION['error'] as $error) {
-            echo '<p class="error">'.$error.'</p>';
-        }
+    if(isset($_SESSION['error'])){
+        echo '<p class="error">'.$_SESSION['error'].'</p>';
         unset ($_SESSION['error']);
-    }*/
+    }
     ?>
 </div>

@@ -6,12 +6,14 @@
  */
 class Entreprise_controller extends CI_Controller {
     private $entrepriseDAO;
+	private $relationDAO;
     private $user;
 
     public function __construct(){
 	parent::__construct();
         $this->db->cache_off();
         $this->entrepriseDAO = new EntrepriseDAOImpl();
+		$this->relationDAO = new RelationDAOImpl();
         $this->user = $this->entrepriseDAO->select($_SESSION['user']->id);
     }
 
@@ -20,6 +22,7 @@ class Entreprise_controller extends CI_Controller {
         $data['titre'] = $this->user->login." profil";
         $data['user'] = $this->user;
         $data['listeOffres'] = $this->entrepriseDAO->selectOwned($this->user->id);
+		$data['listeRelations'] = $this->entrepriseDAO->selectRelations($_SESSION['user']->id);
         $data['contenu'] = 'user/entreprise/profil';
         $data['menu'] = Menu::get();
         $this->load->view('inc/template', $data);

@@ -32,4 +32,5 @@ ul#offres li a{
 }
 .twitterbox div{
     display: block;margin-top: 0;
+	background: url("../../public/img/logo_twitter.png") no-repeat bottom;
 }

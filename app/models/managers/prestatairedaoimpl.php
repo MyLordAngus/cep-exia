@@ -74,6 +74,35 @@ class PrestataireDAOImpl extends AbstractCepDAO implements PrestataireDAO{
         $p = new Prestataire();
         return $this->dbTemplate->loadAll($p->getClassName());
     }
+	
+	public function selectRelations($idPrestataire){
+		$listeRelation = array();
+        $requete = $this->dbTemplate->getDb()->select('ID')
+                 ->get_where('relations', array('IDPrestataire' => $idPrestataire, 'Termine' => 0));
+        foreach($requete->result() as $reqRelation){
+            $r = new Relation();
+            $r = $this->dbTemplate->load($r->getClassName(), $reqRelation->ID);
+			$listeMessages = array();
+			$requete2 = $this->dbTemplate->getDb()
+					 ->from('messages')
+					 ->where(array('IDRelation' => $reqRelation->ID))
+					 ->order_by('Date', 'Desc')
+					 ->limit(1)
+					 ->get();
+			foreach($requete2->result() as $reqMessage){
+				$m = new Message();
+				$m->id = $reqMessage->ID;
+				$m->message = $reqMessage->Message;
+				$m->date = $reqMessage->Date;
+				$c = new Compte();
+				$m->Compte = $this->dbTemplate->load($c->getClassName(), $reqMessage->IDCompte);
+				array_push($listeMessages, $m);
+			}
+			$r->listeMessages = $listeMessages;
+            array_push($listeRelation, $r);
+        }
+        return $listeRelation;
+	}
 }
 
 ?>

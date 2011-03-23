@@ -26,33 +26,16 @@ class Login_controller extends CI_Controller {
             }
         }
         else{
-            if(validation_errors())
-                $data['messages']['error'] = validation_errors();
+            if(validation_errors()){				
+				$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+				$_SESSION['error'] = validation_errors();
+			}
         }
         $data['titre'] = "Login";
         $data['login'] = $this->input->post("login");
         $data['menu'] = Menu::get();
         $data['contenu'] = "user/auth";
         $this->load->view('inc/template', $data);
-    }
-
-    public function refuse(int $param) {
-        switch ($param) {
-            case 1:
-                $data['error'] = "Vous ne possèdez pas les permissions requises.";
-                break;
-
-            case 2:
-                $data['error'] = "Vous n'êtes pas connecté";
-                break;
-
-            case 3:
-                $data['error'] = "Vous n'avez pas acces à cette partie";
-                break;
-
-            default:
-                break;
-        }
     }
 
     public function sinscrire($type=""){

@@ -29,10 +29,10 @@
             if($articles){
                 foreach($articles->post as $a){
                     echo '<div>';
-                    echo '<h6>'.$a->{'regular-title'}.'</h6>';
-                    echo '<p class="grid_5">'.substr($a->{'regular-body'},0,250).'... <a href="'.$a['url'].'">->Lire la suite</a></p>';
+                    echo '<h6 class="grid_7">'.$a->{'regular-title'}.'</h6>';
+                    echo '<p class="grid_7">'.strip_tags(substr($a->{'regular-body'},0,250)).'... <a href="'.$a['url'].'">->Lire la suite</a></p>';
                     echo '</div>';
-                    echo '<div class="separator"></div>';
+                    echo '<div class="grid_7 separator"></div>';
                 }
             }
             ?>

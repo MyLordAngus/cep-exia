@@ -37,11 +37,13 @@
                     <p class="grid_8"></p>
                 </div>
                 <div>
-		<?php if($userType == 'Prestataire'){?>
+		<?php if($userType == 'Prestataire' && $offre->Statut->id < 2){?>
 	    		<a href="<?php echo base_url()."index.php/devis_controller/add/".$offre->id;?>">
 	    		    <h4>Postuler ici</h4>
 	    		</a>
-                <?php };?>
+                <?php }else if($userType == 'Prestataire'){?>
+	    		    <h4>Offre cloturée</h4>
+				<?php }?>
             </div>
         </div>
     </div>

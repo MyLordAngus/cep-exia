@@ -19,28 +19,6 @@ class Site_controller extends CI_Controller {
         $this->load->view('inc/template', $data);
     }
 
-    public function resumeEntreprise($id=1){
-        $entreprise = new Entreprise();
-        $entreprise->select($id);
-        $entreprise->selectOwned();
-        $data['titre'] = "Résumé de ".$entreprise->raisonSoc;
-        $data['entreprise'] = $entreprise;
-        $data['contenu'] = 'user/entreprise/resume';
-        $data['menu'] = Menu::get();
-        $this->load->view('inc/template', $data);
-    }
-
-    public function resumePrestataire($id=1){
-        $prestataire = new Prestataire();
-        $prestataire->select($id);
-        $prestataire->selectOwned();
-        $data['titre'] = "Résumé de ".$prestataire->prenom." ".$prestataire->prenom;
-        $data['prestataire'] = $prestataire;
-        $data['contenu'] = 'user/prestataire/resume';
-        $data['menu'] = Menu::get();
-        $this->load->view('inc/template', $data);
-    }
-
     public function deconnexion(){
         session_destroy();
         $this->db->cache_delete_all();

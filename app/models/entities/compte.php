@@ -7,9 +7,12 @@ class Compte extends AbstractEntity{
     protected $siret;
     protected $telephone;
     protected $type;
+    protected $actif;
+    protected $listeRelations;
 
     public function __construct(){
         $this->mapping['table'] = 'comptes';
+        $this->mapping['hasMany'][] = 'Relation';
     }
 
 

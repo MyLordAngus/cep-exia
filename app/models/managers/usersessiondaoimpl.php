@@ -6,7 +6,7 @@ class UserSessionDAOImpl extends AbstractCepDAO implements UserSessionDAO{
         parent::__construct();
     }
 
-    public function connexion(string $login, string $password){
+    public function connexion($login, $password){
         $requete = $this->dbTemplate->getDb()->select('ID, Type')
                             ->from('comptes')
                             ->where(array('Login' => $login,
@@ -22,7 +22,7 @@ class UserSessionDAOImpl extends AbstractCepDAO implements UserSessionDAO{
         return $compte;
     }
 
-    public function compteExistant(string $login, string $email){
+    public function compteExistant($login, $email){
         $requete = $this->dbTemplate->getDb()->select('id')
                   ->from('comptes')
                   ->where('comptes.Login =', $login)->or_where('comptes.Email =', $email)

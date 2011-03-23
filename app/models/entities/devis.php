@@ -18,19 +18,19 @@ class Devis extends AbstractEntity{
 
 
     public function __get($attribut){
-		if($attribut == 'etat'){
-			switch($this->$attribut){
-				case 0 : return 'En attente de validation';
-				case 1 : return 'Accepté';
-				default : return 'Refusé';
-			}
-		}
             return $this->$attribut;
     }
     public function __set($attribut, $valeur){
             $this->$attribut = $valeur;
     }
     public function __toString() {
-
+        
+    }
+    public function displayEtat() {
+        switch($this->etat){
+                case 0 : return 'En attente de validation';
+                case 1 : return 'Accepté';
+                default : return 'Refusé';
+        }
     }
 }

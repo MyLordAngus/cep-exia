@@ -13,4 +13,6 @@ interface EntrepriseDAO {
     public function selectAll();
 
     public function selectOwned($idEntreprise);
+	
+	public function selectRelations($idEntreprise);
 }

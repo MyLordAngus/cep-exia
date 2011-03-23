@@ -39,7 +39,8 @@ class EntrepriseDAOImpl extends AbstractCepDAO implements EntrepriseDAO{
                 'Adresse' => $e->adresse,
                 'CodePostal' => $e->codePostal,
                 'Ville' => $e->ville,
-                'Domaine' => $e->domaine);
+                'Domaine' => $e->domaine,
+                'Description' => $e->description);
         $this->dbTemplate->getDb()->where('ID', $e->id)
                                   ->update('entreprises', $data);
 
@@ -67,4 +68,33 @@ class EntrepriseDAOImpl extends AbstractCepDAO implements EntrepriseDAO{
         }
         return $listeOffres;
     }
+	
+	public function selectRelations($idEntreprise){
+		$listeRelation = array();
+        $requete = $this->dbTemplate->getDb()->select('ID')
+                 ->get_where('relations', array('IDEntreprise' => $idEntreprise, 'Termine' => 0));
+        foreach($requete->result() as $reqRelation){
+            $r = new Relation();
+            $r = $this->dbTemplate->load($r->getClassName(), $reqRelation->ID);
+			$listeMessages = array();
+			$requete2 = $this->dbTemplate->getDb()
+					 ->from('messages')
+					 ->where(array('IDRelation' => $reqRelation->ID))
+					 ->order_by('Date', 'Desc')
+					 ->limit(1)
+					 ->get();
+			foreach($requete2->result() as $reqMessage){
+				$m = new Message();
+				$m->id = $reqMessage->ID;
+				$m->message = $reqMessage->Message;
+				$m->date = $reqMessage->Date;
+				$c = new Compte();
+				$m->Compte = $this->dbTemplate->load($c->getClassName(), $reqMessage->IDCompte);
+				array_push($listeMessages, $m);
+			}
+			$r->listeMessages = $listeMessages;
+            array_push($listeRelation, $r);
+        }
+        return $listeRelation;
+	}
 }

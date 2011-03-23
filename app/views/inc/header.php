@@ -5,8 +5,8 @@
             <a href="<?php echo URL_BASE;?>"><img alt="CEP" src="<?php echo URL_BASE;?>public/img/header-logo.png" /></a>
             <div class="twitterbox radius-5 shadow-5">
                 <div>
-                    <script src="http://widgets.twimg.com/j/2/widget.js"></script>
-                    <script>
+                    <script type="text/javascript" src="http://widgets.twimg.com/j/2/widget.js"></script>
+                    <script type="text/javascript">
                     new TWTR.Widget({
                       version: 2,
                       type: 'list',
@@ -43,7 +43,7 @@
         </div>
         <?php if( $titre == "Index"){?>
         <div class="grid_9 omega" id="slideshow">
-            <div class=" grid_1 alpha fleche"><a href="#" id="flecheGauche"><img src="<?php echo URL_BASE;?>public/img/fleche-gauche.png" /></a></div>
+            <div class=" grid_1 alpha fleche"><a href="#" id="flecheGauche"><img alt="flecheGauche" src="<?php echo URL_BASE;?>public/img/fleche-gauche.png" /></a></div>
             <div id="id_0" style="background:  url('<?php echo URL_BASE; ?>public/img/slide.png') no-repeat; height: 250px;" class="grid_7 slide">
 
             </div>
@@ -56,7 +56,7 @@
             <div id="id_3" style="background: blue; height: 250px;"  class="grid_7 slide">
 
             </div>
-            <div class=" grid_1 omega fleche"><a href="#" id="flecheDroite"><img src="<?php echo URL_BASE;?>public/img/fleche-droite.png" /></a></div>
+            <div class=" grid_1 omega fleche"><a href="#" id="flecheDroite"><img alt="flecheDroite" src="<?php echo URL_BASE;?>public/img/fleche-droite.png" /></a></div>
         </div>
         <?php }?>
     </div>

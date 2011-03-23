@@ -31,7 +31,7 @@
                 <div class="grid_9 shadow-5 radius-5">
                     <div class="entete-boite radius-5">
                         <span>
-                            Posté le <?php echo $devis->date;?>
+                            Posté le <?php echo date('d/m/Y \à H\H',$devis->date);?>
                             par <a href="<?php echo base_url()."index.php/prestataire_controller/show/".$devis->Prestataire->id;?>">
                                 <?php echo $devis->Prestataire->prenom;?>
                                 <?php echo $devis->Prestataire->nom;?>

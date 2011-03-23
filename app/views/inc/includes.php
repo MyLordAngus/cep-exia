@@ -14,13 +14,14 @@
         <link rel="stylesheet" href="<?php echo URL_BASE;?>public/css/home.css" type="text/css" media="screen" />
         <?php }?>
 	<link rel="icon" type="image/png" href="<?php echo URL_BASE;?>public/img/icon.png" />
+	<link rel="shortcut icon" href="<?php echo URL_BASE;?>public/img/icon.ico" />
         <script type="text/javascript" src="<?php echo URL_BASE;?>public/js/lib/jquery.js"></script>
         <script type="text/javascript" src="<?php echo URL_BASE;?>public/js/slideshow.js"></script>
         <script type="text/javascript" src="<?php echo URL_BASE;?>public/js/lib/plugin/validation.js"></script>
         <script type="text/javascript" src="<?php echo URL_BASE;?>public/js/inscription.js"></script>
         <script type="text/javascript" src="<?php echo URL_BASE;?>public/js/profil.js"></script>
         <script type="text/javascript" src="<?php echo URL_BASE;?>public/js/ckeditor/ckeditor.js"></script>
-		<script type="text/javascript" src="<?php echo URL_BASE;?>public/js/ckeditor/adapters/jquery.js'/>"></script>
+        <script type="text/javascript" src="<?php echo URL_BASE;?>public/js/ckeditor/adapters/jquery.js"></script>
     </head>
     <body>
         <div class="container_16" id="global">

@@ -23,55 +23,67 @@ class Devis_Controller extends CI_Controller{
 
     public function add($idOffre=1){
 	$o = $this->offreDAO->select($idOffre);
-	if(!$this->form_validation->run("devis_add")){
-	    $o->listeDevis = $this->offreDAO->selectDevis($idOffre);
-	    $data['menu'] = Menu::get();
-	    $data['offre'] = $o;
-	    $data['titre'] = "Creation d'un devis";
-	    $data['contenu'] = 'devis/add';
-	    $this->load->view('inc/template', $data);
-	}else{
-	    $Devis = new Devis();
-	    $Devis->montant = $this->input->post('montant');
-	    $Devis->Offre = $o;
-	    $Devis->Prestataire->id = $_SESSION['user']->id;
-	    $Devis->description = $this->input->post('description');
-	    $Devis->duree = $this->input->post('duree');
-	    $this->devisDAO->insert($Devis);
-	    redirect('offres/description/offre-'.$Devis->Offre->id);
-	}
+		if($o->Statut->id < 2){
+			if(!$this->form_validation->run("devis_add")){
+				$o->listeDevis = $this->offreDAO->selectDevis($idOffre);
+				$data['menu'] = Menu::get();
+				$data['offre'] = $o;
+				$data['titre'] = "Creation d'un devis";
+				$data['contenu'] = 'devis/add';
+				$this->load->view('inc/template', $data);
+			}else{
+				$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+				$_SESSION['error'] = validation_errors();
+				$Devis = new Devis();
+				$Devis->montant = $this->input->post('montant');
+				$Devis->Offre = $o;
+				$Devis->Prestataire->id = $_SESSION['user']->id;
+				$Devis->description = $this->input->post('description');
+				$Devis->duree = $this->input->post('duree');
+				$this->devisDAO->insert($Devis);
+				redirect('offres/description/offre-'.$Devis->Offre->id);
+			}
+		}else{
+			$_SESSION['error'] = "L'offre ${$o->titre} est cloturée.";
+				redirect('offres');
+		}
     }
 
     public function edit($idDevis=0){
-	$d = $this->devisDAO->select($idDevis);
-	if(!$this->form_validation->run("devis_add")){
-	    $data['menu'] = Menu::get();
-	    $data['devis'] = $d;
-	    $data['titre'] = "Creation d'un devis";
-	    $data['contenu'] = 'devis/edit';
-	    $this->load->view('inc/template', $data);
-	}else{
-	    $devis = $d;
-	    $devis->montant = $this->input->post('montant');
-	    $devis->Prestataire->id = $_SESSION['user']->id;
-	    $devis->description = $this->input->post('description');
-	    $devis->duree = $this->input->post('duree');
-	    $this->devisDAO->update($devis);
-	    redirect('prestataire_controller');
-	}
+		$d = $this->devisDAO->select($idDevis);
+		if($d->etat < 1){
+			if(!$this->form_validation->run("devis_add")){
+				$data['menu'] = Menu::get();
+				$data['devis'] = $d;
+				$data['titre'] = "Creation d'un devis";
+				$data['contenu'] = 'devis/edit';
+				$this->load->view('inc/template', $data);
+			}else{
+				$devis = $d;
+				$devis->montant = $this->input->post('montant');
+				$devis->Prestataire->id = $_SESSION['user']->id;
+				$devis->description = $this->input->post('description');
+				$devis->duree = $this->input->post('duree');
+				$this->devisDAO->update($devis);
+				redirect('prestataire_controller');
+			}
+		}else{
+			$_SESSION['error'] = "Le devis n'est plus modifiable.";
+			redirect('prestataire');
+		}
     }
 
     public function accepter($idDevis, $idOffre){
 	$offre = $this->offreDAO->select($idOffre);
-	$listeDevis = $this->offreDAO->selectDevis();
+	$listeDevis = $this->offreDAO->selectDevis($idOffre);
 	foreach($listeDevis as $d){
-	    if($d->numero == $idDevis)
+	    if($d->id == $idDevis)
 		$d->etat = 1;
 	    else
 		$d->etat = -1;
 	    $this->devisDAO->update($d);
 	}
-	redirect('devis/tous-les-devis/offre-'.$offre->numero);
+	redirect('devis/tous-les-devis/offre-'.$offre->id);
     }
 
     public function show($idDevis){

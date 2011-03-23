@@ -1,21 +1,29 @@
 <?php
+/**
+ * Description of Message
+ *
+ * @author SuperBen
+ */
+class Message extends AbstractEntity{
+    private $message;
+    private $Compte;
+    private $date;
 
-class Categorie extends AbstractEntity{
-    private $libelle;
 
     public function __construct(){
-        $this->mapping['table'] = 'categories';
+        $this->mapping['table'] = 'messages';
+        $this->mapping['hasOne'][] = 'Compte';
     }
+
+
     public function __get($attribut){
             return $this->$attribut;
     }
     public function __set($attribut, $valeur){
             $this->$attribut = $valeur;
     }
-
     public function __toString(){
-		return $this->libelle;
+
     }
 }
-
 ?>

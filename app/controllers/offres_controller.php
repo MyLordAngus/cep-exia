@@ -69,7 +69,7 @@ class Offres_controller extends CI_Controller {
             $offre->Categorie->ID = $this->input->post('categorie');
             $this->offreDAO->update($offre);
             $this->db->cache_delete('offres_controller', 'description');
-            redirect('offres_controller/description/'.$offre->id);
+            redirect('devis_controller/index/'.$offre->id);
         }
     }
 

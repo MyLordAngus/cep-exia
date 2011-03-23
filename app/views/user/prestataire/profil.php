@@ -3,6 +3,12 @@
          <h4 class="entete-boite shadow-5 radius-5">Actions</h4>
         <ul>
             <li>
+                <a href="#devis_profil">Mes devis</a>
+            </li>
+            <li>
+                <a href="#conversations">Mes convrsations</a>
+            </li>
+            <li>
                 <a href="<?php echo base_url()."index.php/offres_controller/";?>">Voir les offres</a>
             </li>
             <li>
@@ -83,28 +89,56 @@
                 </ul>
             </div>
         </form>
-        <div>
-        <h5>Devis déposés :</h5>
-            <table id="devis_profil">
-                <tr>
-                    <th>Date de dépos</th>
-                    <th>Prix</th>
-                    <th>Description</th>
-                    <th>Etat</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <?php foreach($devis as $d) : ?>
-                    <tr>
-			<td><?php echo date("d/m/y",$d->date) ?></td>
-                        <td><?php echo $d->montant ?></td>
-                        <td><?php echo substr($d->description,0 , 250) ?></td>
-                        <td><?php echo $d->etat ?></td>
-                        <td><a href="<?php echo base_url() ?>index.php?devis_controller/show/<?php echo $d->id ?>html">Aperçu</a></td>
-                        <td><a href="<?php echo base_url() ?>index.php?devis_controller/edit/<?php echo $d->id ?>">Editer</a></td>
-                   </tr>
-                <?php endforeach ?>
-            </table>
-        </div>
     </div>
+	<p class="grid_15"></p>
+	<div class="grid_16" id="conversations">
+	<h5>Conversations en court :</h5>
+		<?php 
+		if(count($listeRelations) > 0){
+			foreach($listeRelations as $r){
+			?>
+				<div class="grid_5 radius-5 shadow-5">
+					<h6 class="entete-boite radius-5 shadow-5">Conversation avec <?php echo $r->Entreprise->login;?></h6>
+					<a href="<?php echo URL_BASE.'index.php/chat_controller/index/'.$r->id?>">
+					<?php 
+						echo '<p class="grid_4">';
+						foreach($r->listeMessages as $m){
+							echo strip_tags(substr($m->message, 0, 150)).' <br/> le '.date('d/m/Y', $m->date).'
+								à '.date('H', $m->date).'H </p>';
+						}
+					?>
+					</a>
+				</div>
+			<?php 
+			}
+		}?>
+	</div>
+	<p class="grid_16">&nbsp;</p>
+	<div id="offres_profil">
+	<h5>Devis déposés :</h5>
+		<table id="devis_profil">
+			<tr>
+				<th>Date de dépos</th>
+				<th>Prix</th>
+				<th>Description</th>
+				<th>Etat</th>
+				<th></th>
+				<th></th>
+			</tr>
+			<?php foreach($devis as $d) : ?>
+				<tr>
+		<td><?php echo date("d/m/y",$d->date) ?></td>
+					<td><?php echo $d->montant ?></td>
+					<td><?php echo substr($d->description,0 , 250) ?></td>
+					<td><?php echo $d->displayEtat() ?></td>
+					<td><a href="<?php echo base_url() ?>index.php?devis_controller/show/<?php echo $d->id ?>.html">Aperçu</a></td>
+					<td>
+						<?php if($d->etat < 1){?>
+						<a href="<?php echo base_url() ?>index.php?devis_controller/edit/<?php echo $d->id ?>">Editer</a>
+						<?php }?>
+					</td>
+			   </tr>
+			<?php endforeach ?>
+		</table>
+	</div>
 </div>

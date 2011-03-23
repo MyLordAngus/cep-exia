@@ -13,4 +13,6 @@ interface PrestataireDAO {
     public function selectAll();
 
     public function selectOwned($idPrestatire);
+	
+	public function selectRelations($idPrestatire);
 }

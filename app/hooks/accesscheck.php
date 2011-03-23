@@ -20,38 +20,31 @@ class Accesscheck {
     }
 
     public function before($params) {
-        require_once('permissions.php');
+        include_once('permissions.php');
 
         if(!empty($doesNotRequireAuth[$this->class][$this->method])){
             return true;
         }
         else{
             if(!isset($_SESSION['user'])){
-                echo "coucou1";exit;
                 $this->redirect(2);
             }
             else{
                 $user = $_SESSION['user'];
                 $userType = $user->type;
-                if(empty ($permissions[$userType][$this->class][$this->method]) OR
-                        $permissions[$userType][$this->class][$this->method] != true){
-                    $this->redirect(3);
+                if(!empty ($permissions[$userType][$this->class][$this->method]) ||
+                        $permissions[$userType][$this->class][$this->method] == true){
+                    return true;
                 }
+                $this->redirect(3);
             }
         }
-        //$this->redirect(1);
+        $this->redirect(1);
     }
 
     public function after() {
-        $form_validation =& get_instance()->form_validation;
-        $form_validation->set_error_delimiters('<p class="error">', '</p>');
-        if(isset($_SESSION['error'])){
-            $data = array();
-            $output =& get_instance()->output;
-            $data['messages']['error'] = $_SESSION['error'];
-            $output->append_output($data);
-            unset ($_SESSION['error']);
-        }
+        $CI =& get_instance();
+		$_SESSION['lastPageViewed'] = $CI->uri->uri_string();
     }
 
     private function redirect(int $error) {
@@ -61,13 +54,15 @@ class Accesscheck {
                 break;
             case 2:
                 $_SESSION['error'] = "Vous devez vous authentifier";
+				header("location: {$this->baseURL}index.php/login.html");
+				exit;
                 break;
             case 3:
                 $_SESSION['error'] = "Vos droits ne vous permettent pas d'accèder à cette partie";
                 break;
             default:
         }
-        header("location: {$this->baseURL}index.php/login.html");
+        header("location: {$this->baseURL}index.php/".$_SESSION['lastPageViewed'].'.html');
         exit;
     }
 }

@@ -3,11 +3,21 @@
         <!--<img alt="icon_company" title="Entreprise" src="<?php echo URL_BASE;?>public/img/icon_company.png" />-->
         <h4 class="entete-boite radius-5 shadow-5">Actions</h4>
         <ul>
+			<li>
+				<a href="#offres_profil">
+				Mes offres
+				</a>
+			</li>
+			<li>
+				<a href="#conversations">
+				Mes conversations
+				</a>
+			</li>
             <li>
                 <a href="<?php echo base_url()."index.php/offres_controller/add";?>">Ajouter une offre</a>
             </li>
             <li>
-                <a href="<?php echo base_url()."index.php/offres_controller/";?>">Voir les offres</a>
+                <a href="<?php echo base_url()."index.php/offres_controller/";?>">Consulter toutes les offres</a>
             </li>
             <li>
                 <a href="#">
@@ -67,7 +77,7 @@
                 </div>
                 <div class="grid_5 alpha">
                     <p>
-                        <label for="domaine">Domaine :</label>
+                        <label for="domaine">Siret :</label>
                         <input type="text" name="siret" id="siret" value="<?php echo $user->siret?>" disabled />
                     </p>
                 </div>
@@ -80,10 +90,9 @@
 				<p class="grid_11"></p>
 				<div class="grid_11">
 					<h6>Description de votre entreprise :</h6>
-					<textarea name="description" rows="4" id="editor1" cols="80"><?php echo $user->description ?></textarea>
-					<script type="text/javascript">
-							CKEDITOR.replace( 'editor1', {toolbar : 'Basic', width : 655, height: 150} );
-					</script>
+					<textarea name="description" rows="8" id="editor1" cols="125">
+						<?php echo $user->description ?>
+					</textarea>
 				</div>
                 <div class="grid_5 omega">
                     <p>
@@ -95,8 +104,33 @@
                 </div>
             </div>
         </form>
-        <div>
-            <h6>Offres déposés :</h6>
+    </div>
+	<p class="grid_15"></p>
+	<div class="grid_16" id="conversations">
+	<h5>Conversations en court :</h5>
+	<?php 
+	if(count($listeRelations) > 0){
+		foreach($listeRelations as $r){
+		?>
+			<div class="grid_5 radius-5 shadow-5">
+				<h6 class="entete-boite radius-5 shadow-5">Conversation avec <?php echo $r->Prestataire->login;?></h6>
+				<a href="<?php echo URL_BASE.'index.php/chat_controller/index/'.$r->id?>">
+				<?php 
+					echo '<p class="grid_4">';
+					foreach($r->listeMessages as $m){
+						echo strip_tags(substr($m->message, 0, 150)).' <br/> le '.date('d/m/Y', $m->date).'
+							à '.date('H', $m->date).'H </p>';
+					}
+				?>
+				</a>
+			</div>
+		<?php 
+		}
+	}?>
+	</div>
+	<p class="grid_15"></p>
+	<div >
+            <h6 class="">Offres déposés :</h6>
             <table id="offres_profil">
                 <thead>
                     <th>Titre</th>
@@ -114,11 +148,16 @@
                             <td>'.$o->montantMoyen().'</td>
                             <td >'.$o->Categorie.'</td>
                             <td >'.$o->Statut.'</td>
-                            <td>'.$o->compteDevis().'</td>
-                            <td><a href="'.base_url()."index.php/offres_controller/edit/".$o->id.'">
+                            <td>'.$o->compteDevis().'</td>';
+					if($o->Statut->libelle != 'Validation'){
+						echo '<td><a href="'.base_url()."index.php/offres_controller/edit/".$o->id.'">
                                 Editer
-                            </a></td>
-                            <td><a href="'.base_url()."index.php/devis/tous-les-devis/offre-".$o->id.'.html">
+                            </a></td>';
+						
+					}else{
+						echo '<td></td>';
+					}
+					echo '<td><a href="'.base_url()."index.php/devis/tous-les-devis/offre-".$o->id.'.html">
                                 Voir
                             </a></td>
                        </tr>';
@@ -126,5 +165,4 @@
                 ?>
             </table>
         </div>
-    </div>
 </div>
