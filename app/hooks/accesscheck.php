@@ -9,19 +9,21 @@ class Accesscheck {
     private $baseURL;
     private $class;
     private $method;
+	private $id;
     
     public function  __construct() {
         if(!isset($_SESSION))
             session_start();
         $this->baseURL = $GLOBALS['CFG']->config['base_url'];
         $routing =& load_class('Router');
+        $uri =& load_class('URI');
         $this->class = strtolower($routing->fetch_class());
         $this->method = strtolower($routing->fetch_method());
+        $this->id = strtolower($uri->rsegment(3));
     }
 
     public function before($params) {
         include_once('permissions.php');
-
         if(!empty($doesNotRequireAuth[$this->class][$this->method])){
             return true;
         }
@@ -32,9 +34,19 @@ class Accesscheck {
             else{
                 $user = $_SESSION['user'];
                 $userType = $user->type;
-                if(!empty ($permissions[$userType][$this->class][$this->method]) ||
+                if(!empty ($permissions[$userType][$this->class][$this->method]) &&
                         $permissions[$userType][$this->class][$this->method] == true){
                     return true;
+                }else if(!empty ($ownerRequirement[$userType][$this->class][$this->method])){
+                    $objet = $ownerRequirement[$userType][$this->class][$this->method];
+                    if(in_array($objet, $user->listeOwned)){
+						foreach($user->listeOwned[$objet] as $row){
+							if($row['ID'] == $this->id){
+								return true;
+							}
+						}
+					$this->redirect(4);
+                    }
                 }
                 $this->redirect(3);
             }
@@ -59,6 +71,9 @@ class Accesscheck {
                 break;
             case 3:
                 $_SESSION['error'] = "Vos droits ne vous permettent pas d'accèder à cette partie";
+                break;
+			case 4:
+                $_SESSION['error'] = "Cet objet ne vous appartient pas.";
                 break;
             default:
         }

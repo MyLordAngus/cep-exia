@@ -2,7 +2,7 @@
 
     $doesNotRequireAuth = array();
     $permissions = array();
-    $errors = array();
+    $ownerRequirement = array();
 
     //ne requiert aucune authentification
     $doesNotRequireAuth['site_controller']['index']=true;
@@ -18,12 +18,13 @@
     $permissions['entreprise']['entreprise_controller']['index']=true;
     $permissions['entreprise']['entreprise_controller']['save']=true;
     $permissions['entreprise']['offres_controller']['add']=true;
-    $permissions['entreprise']['offres_controller']['edit']=true;
-    $permissions['entreprise']['devis_controller']['accepter']=true;
-    $permissions['entreprise']['devis_controller']['index']=true;
     $permissions['entreprise']['prestataire_controller']['show']=true;
-    $permissions['entreprise']['chat_controller']['index']=true;
-    $permissions['entreprise']['chat_controller']['post']=true;
+
+    $ownerRequirement['entreprise']['chat_controller']['index']='Relation';
+    $ownerRequirement['entreprise']['chat_controller']['post']='Relation';
+    $ownerRequirement['entreprise']['devis_controller']['index']='Offre';
+    $ownerRequirement['entreprise']['devis_controller']['accepter']='Offre';
+    $ownerRequirement['entreprise']['offres_controller']['edit']='Offre';
 	
 	//permissions Prestataire
     $permissions['prestataire']['site_controller']['deconnexion']=true;
@@ -31,8 +32,9 @@
     $permissions['prestataire']['prestataire_controller']['save']=true;
     $permissions['prestataire']['offres_controller']['description']=true;
     $permissions['prestataire']['devis_controller']['add']=true;
-    $permissions['prestataire']['devis_controller']['edit']=true;
-    $permissions['prestataire']['devis_controller']['show']=true;
     $permissions['prestataire']['entreprise_controller']['show']=true;
-    $permissions['prestataire']['chat_controller']['index']=true;
-    $permissions['prestataire']['chat_controller']['post']=true;
+
+    $ownerRequirement['prestataire']['chat_controller']['index']='Relation';
+    $ownerRequirement['prestataire']['chat_controller']['post']='Relation';
+    $ownerRequirement['prestataire']['devis_controller']['edit']='Devis';
+    $ownerRequirement['prestataire']['devis_controller']['show']='Devis';

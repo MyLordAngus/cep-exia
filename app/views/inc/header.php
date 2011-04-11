@@ -2,7 +2,7 @@
     <div class="grid_16" id="header">
         <div class="grid_7 alpha" id="logo">
             <h1 id="titre">Communauté des Exars Prestataires</h1>
-            <a href="<?php echo URL_BASE;?>"><img alt="CEP" src="<?php echo URL_BASE;?>public/img/header-logo.png" /></a>
+            <a href="<?php echo URL_BASE;?>"><img alt="logo de la CEP" titre="logo de la communauté des exars prestataires" src="<?php echo URL_BASE;?>public/img/header-logo.png" /></a>
             <div class="twitterbox radius-5 shadow-5">
                 <div>
                     <script type="text/javascript" src="http://widgets.twimg.com/j/2/widget.js"></script>
@@ -44,16 +44,16 @@
         <?php if( $titre == "Index"){?>
         <div class="grid_9 omega" id="slideshow">
             <div class=" grid_1 alpha fleche"><a href="#" id="flecheGauche"><img alt="flecheGauche" src="<?php echo URL_BASE;?>public/img/fleche-gauche.png" /></a></div>
-            <div id="id_0" style="background:  url('<?php echo URL_BASE; ?>public/img/slide.png') no-repeat; height: 250px;" class="grid_7 slide">
+            <div id="id_0" style="background:  url('<?php echo URL_BASE; ?>public/img/slide2.png') no-repeat; height: 250px;" class="grid_7 slide">
 
             </div>
-            <div id="id_1" style="background: green; height: 250px;"  class="grid_7 slide">
+            <div id="id_1" style="background:  url('<?php echo URL_BASE; ?>public/img/slide3.png') no-repeat; height: 250px;" class="grid_7 slide">
 
             </div>
-            <div id="id_2" style="background: yellow; height: 250px;"  class="grid_7 slide">
+            <div id="id_2" style="background:  url('<?php echo URL_BASE; ?>public/img/slide4.png') no-repeat; height: 250px;"  class="grid_7 slide">
 
             </div>
-            <div id="id_3" style="background: blue; height: 250px;"  class="grid_7 slide">
+            <div id="id_3" style="background:  url('<?php echo URL_BASE; ?>public/img/slide5.png') no-repeat; height: 250px;"  class="grid_7 slide">
 
             </div>
             <div class=" grid_1 omega fleche"><a href="#" id="flecheDroite"><img alt="flecheDroite" src="<?php echo URL_BASE;?>public/img/fleche-droite.png" /></a></div>

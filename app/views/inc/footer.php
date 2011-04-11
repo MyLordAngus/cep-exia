@@ -4,11 +4,11 @@
                     <div class="grid_3 alpha">
                         <h6>Navigation</h6>
                         <ul>
-                            <li><a href="<?php echo URL_BASE?>">Accueil</a></li>
-                            <li><a href="<?php echo URL_BASE?>">Offres</a></li>
-                            <li><a href="<?php echo URL_BASE?>">Inscription</a></li>
-                            <li><a href="<?php echo URL_BASE?>">Login</a></li>
-                            <li><a href="<?php echo URL_BASE?>">Contact</a></li>
+                            <?php
+                                foreach($menu as $key=>$value){
+                                    echo '<li><a href="'.URL_BASE.'index.php'.$value['lien'].'">'.$value['libelle'].'</a></li>';
+                                }
+                            ?>
                         </ul>
                     </div>
                     <div class="grid_3">

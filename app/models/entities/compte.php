@@ -6,8 +6,6 @@ class Compte extends AbstractEntity{
     protected $email;
     protected $siret;
     protected $telephone;
-    protected $type;
-    protected $actif;
     protected $listeRelations;
 
     public function __construct(){
@@ -27,4 +25,3 @@ class Compte extends AbstractEntity{
     }
 }
 
-?>

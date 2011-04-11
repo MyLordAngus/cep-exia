@@ -26,7 +26,6 @@ class PrestataireDAOImpl extends AbstractCepDAO implements PrestataireDAO{
     }
 
     public function insert(Prestataire $p){
-        parent::insert($p);
         $data = array('ID' => $p->ID,
                 'Nom' => $p->nom,
                 'Prenom' => $p->prenom);

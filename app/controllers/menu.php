@@ -9,7 +9,7 @@ class Menu {
         $menu = new Menu_DB();
         if(isset($_SESSION['user'])){
             $user = $_SESSION['user'];
-            if($user->getClassName() == 'Entreprise')
+            if($user->type == 'entreprise')
                 $menu = $menu->getMenuByCode(array(2,4));
             else
                 $menu = $menu->getMenuByCode(array(3,4));

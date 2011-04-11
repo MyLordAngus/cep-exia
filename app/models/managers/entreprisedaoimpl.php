@@ -17,14 +17,21 @@ class EntrepriseDAOImpl extends AbstractCepDAO implements EntrepriseDAO{
     }
 
     public function insert(Entreprise $e){
-        parent::insert($e);
-        $data = array('ID' => $this->ID,
+         $data = array('Login' => $e->login,
+                'Password' => $e->password,
+                'Email' => $e->email,
+                'Siret' => $e->siret,
+                'Actif' => 1,
+                'Telephone' => $e->telephone);
+        $this->dbTemplate->getDb()->insert('comptes', $data);
+        $id = $this->dbTemplate->getDb()->insert_id();
+        $data = array('ID' => $id,
                 'RaisonSoc' => $e->raisonSoc,
                 'Adresse' => $e->adresse,
                 'CodePostal' => $e->codePostal,
                 'Ville' => $e->ville,
                 'Domaine' => $e->domaine);
-        $this->db->insert('entreprises', $data);
+        $this->dbTemplate->getDb()->insert('entreprises', $data);
     }
 
     public function update(Entreprise $e){

@@ -6,11 +6,15 @@
  */
 class Login_controller extends CI_Controller {
     private $usersessionDAO;
+    private $entrepriseDAO;
+    private $prestataireDAO;
     
 
     public function  __construct() {
         parent::__construct();
         $this->usersessionDAO = new UserSessionDAOImpl();
+        $this->entrepriseDAO = new EntrepriseDAOImpl();
+        $this->prestataireDAO = new PrestataireDAOImpl();
     }
     public function index(){
         if($this->form_validation->run('login')){
@@ -18,8 +22,7 @@ class Login_controller extends CI_Controller {
                                                      $this->input->post('mdp'));
             if($user){
                 $_SESSION['user'] = $user;
-                $user = AbstractEntity::cast($user);
-                redirect(strtolower($user->getClassName()));
+                redirect(strtolower($user->type));
             }
             else{
                 $data['messages']['error'] = "Combinaison login+mot-de-passe invalide.";
@@ -47,6 +50,7 @@ class Login_controller extends CI_Controller {
                 $user->codePostal = $this->input->post('cp');
                 $user->ville = $this->input->post('ville');
                 $user->domaine = $this->input->post('domaine');
+                $user->description = $this->input->post('description');
             }
             else{
                 $user = new Prestataire();
@@ -58,15 +62,20 @@ class Login_controller extends CI_Controller {
             $user->telephone = $this->input->post('tel');
             $user->email = $this->input->post('email');
             $user->siret = $this->input->post('siret');
-            if($user->insert()){
-                $data = array(
-                    'login' => $user->Compte->login,
-                    'type' => $user->Compte->type,
-                    'isLoged' => true
-                );
-                $this->session->set_userdata($data);
-                $data['messages']['info'] = "Votre inscription a été validée.";
-                redirect($user->getType());
+            if(!$this->usersessionDAO->compteExistant($user->login, $user->email)){
+                if($type == 'entreprise'){
+                    $this->entrepriseDAO->insert($user);
+                    $usersession = new UserSession();
+                    $usersession->login = $user->login;
+                    $usersession->type = "entreprise";
+                    $_SESSION['user'] = $usersession;
+                    redirect($usersession->type);
+                }
+                else{
+                    $this->prestataireDAO->insert($user);
+                    $data['messages']['error'] = "Votre inscription sera prise en compte prochainement par un administrateur.";
+                    redirect("");
+                }
             }
             else{
                 $data['messages']['error'] = "Votre login ou votre e-mail est déjà utilisé.";

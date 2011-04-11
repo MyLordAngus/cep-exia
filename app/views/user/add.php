@@ -35,7 +35,7 @@
 					</p>
 					<p>
 						<label for="telephone">Téléphone</label>
-						<input class="tel input-15" type="text" name="telephone" value="" maxlength="10"/>
+						<input class="tel input-15" type="text" name="tel" value="" maxlength="10"/>
 					</p>
 					<p>
 						<label for="siret">Code siret</label>

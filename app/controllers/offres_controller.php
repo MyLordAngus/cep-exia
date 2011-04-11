@@ -24,7 +24,7 @@ class Offres_controller extends CI_Controller {
         //Pagination en place
         $config['base_url'] = base_url()."index.php/offres_controller/page/";
         $config['total_rows'] = $this->offreDAO->compteOffres();
-        $config['per_page'] = '5';
+        $config['per_page'] = 10;
         $data['offres'] = $this->offreDAO->selectLimit($page, $config['per_page']);
         $this->pagination->initialize($config);
         $data['pagination'] = $this->pagination->create_links();
@@ -76,7 +76,7 @@ class Offres_controller extends CI_Controller {
     public function description($idOffre){
         $o = $this->offreDAO->select($idOffre);
         $data['titre'] = $o->titre;
-		$data['userType'] = $_SESSION['user']->getClassName();
+		$data['userType'] = $_SESSION['user']->type;
         //Infos Entreprise
         $data['entreprise'] = $o->Entreprise;
         $data['offre'] = $o;
