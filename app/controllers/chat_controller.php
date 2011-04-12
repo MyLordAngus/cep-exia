@@ -29,6 +29,7 @@ class Chat_controller extends CI_Controller{
 			$m->message = $this->input->post('post');
 			$m->Compte = $_SESSION['user'];
 			$this->relationDAO->addMessage($idRelation, $m);
+                        $_SESSION['user']->addOwnObject($m);
 		}else{
 			$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
 			$_SESSION['error'] = validation_errors();

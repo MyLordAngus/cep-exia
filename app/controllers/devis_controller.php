@@ -41,6 +41,7 @@ class Devis_Controller extends CI_Controller{
 				$Devis->description = $this->input->post('description');
 				$Devis->duree = $this->input->post('duree');
 				$this->devisDAO->insert($Devis);
+                                $_SESSION['user']->addOwnObject($Devis);
 				redirect('offres/description/offre-'.$Devis->Offre->id);
 			}
 		}else{

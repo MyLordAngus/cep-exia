@@ -19,6 +19,10 @@ class UserSession{
         $this->listeOwned = array();
     }
 
+    public function addOwnObject(AbstractEntity $obj){
+        $this->listeOwned[$obj->getClassName()][]["ID"] = $obj->id;
+    }
+
     public function __get($attribut){
             return $this->$attribut;
     }

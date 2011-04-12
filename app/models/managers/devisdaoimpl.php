@@ -17,6 +17,7 @@ class DevisDAOImpl extends AbstractCepDAO implements DevisDAO{
                       'IDPrestataire'=> $d->Prestataire->id);
         $this->dbTemplate->getDb()->where('ID', $d->id)
 								->update('devis', $data);
+            $d->id = $this->dbTemplate->getDb()->insert_id();
     }
 
     public function insert(Devis $d){

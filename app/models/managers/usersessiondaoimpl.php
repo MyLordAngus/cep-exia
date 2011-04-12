@@ -61,6 +61,5 @@ class UserSessionDAOImpl extends AbstractCepDAO implements UserSessionDAO{
         $requete = $db->get();
         return $requete->result();
     }
-}
 
-?>
+}

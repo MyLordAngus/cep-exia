@@ -62,6 +62,7 @@ class RelationDAOImpl extends AbstractCepDAO implements RelationDAO{
                       'IDRelation'=> $idRelation,
                       'Date'=> time());
         $this->dbTemplate->getDb()->insert('messages', $data);
+        $m->id = $this->dbTemplate->getDb()->insert_id();
     }
 
     public function delete($idRelation) {

@@ -19,6 +19,7 @@ class OffreDAOImpl extends AbstractCepDAO implements OffreDAO{
                     'IDStatut' => $o->Statut->id,
                     'Description' => $o->description);
             $this->dbTemplate->getDb()->insert('offres', $data);
+            $o->id = $this->dbTemplate->getDb()->insert_id();
     }
 
     public function update(Offre $o){
